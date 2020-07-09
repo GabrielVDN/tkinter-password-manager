@@ -15,7 +15,6 @@ class WorkManager(tk.Tk):
 
         self.title("My Work Manager")
         self.columnconfigure(0, weight=1)
-        self.rowconfigure(1, weight=1)
 
         container = ttk.Frame(self)
         container.grid()
