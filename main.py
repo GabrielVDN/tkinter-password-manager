@@ -14,8 +14,18 @@ class WorkManager(tk.Tk):
         style.theme_use("clam")
 
         style.configure("Background.TFrame", background="#7fd49c")
-
-        self.columnconfigure(0, weight=1)
+        style.configure("Background.TLabel", background="#7fd49c")
+        style.configure(
+            "Background.TButton",
+            background="#4a855e",
+            bordercolor="black",
+            relief="solid"
+        )  
+        style.map(
+            "Background.TButton",
+            background=[("active", "#3e704f")],
+            font=[("active",  ("TkDefaultFont", 25))]
+        )
 
 
         # Set the widget's background.
@@ -24,13 +34,15 @@ class WorkManager(tk.Tk):
         self.title("My Work Manager")
         # Give the Widget a size.
         self.geometry("600x400")
+        # Put everything in the middle.
+        self.columnconfigure(0, weight=1)
 
         # Set the overall fontsize to 15 instead of 10.
         font.nametofont("TkDefaultFont").configure(size=24)
 
+
         container = ttk.Frame(self)
         container.grid()
-        container.columnconfigure(0, weight=1)
 
         self.frames = {}
 
