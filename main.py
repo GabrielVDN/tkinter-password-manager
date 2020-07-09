@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-from collections import deque
+import tkinter.font as font
 from frames import Home, Work
 from ctypes import windll
 windll.shcore.SetProcessDpiAwareness(1)
@@ -13,8 +13,20 @@ class WorkManager(tk.Tk):
         style = ttk.Style()
         style.theme_use("clam")
 
-        self.title("My Work Manager")
+        style.configure("Background.TFrame", background="#7fd49c")
+
         self.columnconfigure(0, weight=1)
+
+
+        # Set the widget's background.
+        self["background"] = "#7fd49c"
+        # Give the Widget a name.
+        self.title("My Work Manager")
+        # Give the Widget a size.
+        self.geometry("600x400")
+
+        # Set the overall fontsize to 15 instead of 10.
+        font.nametofont("TkDefaultFont").configure(size=24)
 
         container = ttk.Frame(self)
         container.grid()

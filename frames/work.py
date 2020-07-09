@@ -6,6 +6,10 @@ class Work(ttk.Frame):
     def __init__(self, parent, controller, show_home):
         super().__init__(parent)
 
+
+        # Set the widget's background.
+        self["style"] = "Background.TFrame"
+
         label = ttk.Label(self, text="Work")
         label.grid()
 
