@@ -7,6 +7,7 @@ class Work(ttk.Frame):
         super().__init__(parent)
 
         label = ttk.Label(self, text="Work")
+        label.grid()
 
         work_btn = ttk.Button(
             self,
