@@ -10,10 +10,15 @@ class Home(ttk.Frame):
         # Set the widget's background.
         self["style"] = "Background.TFrame"
 
-        label = ttk.Label(
-            self, text="Home", style="Background.TLabel"
+        workplaces = ["workplace 1", "workplace 2", "workplace 3"]
+        select_workplace = ttk.Combobox(
+            self,
+            values=workplaces,
+            state="readonly",
+            style="Background.TCombobox"
         )
-        label.grid()
+        select_workplace.grid()
+        select_workplace.current(0)
 
         work_btn = ttk.Button(
             self,

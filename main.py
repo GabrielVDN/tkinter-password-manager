@@ -15,6 +15,7 @@ class WorkManager(tk.Tk):
 
         style.configure("Background.TFrame", background="#7fd49c")
         style.configure("Background.TLabel", background="#7fd49c")
+        style.configure("Background.TCombobox", background="#7fd49c")
         style.configure(
             "Background.TButton",
             background="#4a855e",
