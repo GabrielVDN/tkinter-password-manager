@@ -33,7 +33,7 @@ class WorkManager(tk.Tk):
         # Give the Widget a name.
         self.title("My Work Manager")
         # Give the Widget a size.
-        self.geometry("600x400")
+        self.geometry("800x400")
         # Put everything in the middle.
         self.columnconfigure(0, weight=1)
 
