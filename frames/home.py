@@ -15,6 +15,7 @@ class Home(ttk.Frame):
             self,
             values=workplaces,
             state="readonly",
+            font=("TkDefaultFont", 14),
             style="Background.TCombobox"
         )
         select_workplace.grid()
