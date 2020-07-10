@@ -57,9 +57,9 @@ class Home(ttk.Frame):
             # in table like structure. 
             cal_year.grid(row = 5, column = 1, padx = 20) 
             
-
             for child in new_gui.winfo_children():
                 child.grid_configure(padx=12, pady=12)
+                
             # start the GUI  
             new_gui.mainloop()
 
