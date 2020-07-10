@@ -3,7 +3,7 @@ from tkinter import ttk
 
 
 class Home(ttk.Frame):
-    def __init__(self, parent, controller, show_work):
+    def __init__(self, parent, controller, show_settings):
         super().__init__(parent)
 
 
@@ -17,8 +17,8 @@ class Home(ttk.Frame):
 
         work_btn = ttk.Button(
             self,
-            text="Work",
-            command=show_work,
+            text="Settings",
+            command=show_settings,
             cursor="hand2",
             style="Background.TButton"
         )

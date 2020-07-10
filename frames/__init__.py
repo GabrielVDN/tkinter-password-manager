@@ -1,2 +1,2 @@
 from frames.home import Home
-from frames.work import Work
+from frames.settings import Settings
