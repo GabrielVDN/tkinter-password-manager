@@ -25,7 +25,7 @@ class WorkManager(tk.Tk):
         style.map(
             "Background.TButton",
             background=[("active", "#3e704f")],
-            font=[("active",  ("TkDefaultFont", 25)), ("pressed",  ("TkDefaultFont", 26))]
+            font=[("active",  ("TkDefaultFont", 17))]
         )
 
 
@@ -39,7 +39,7 @@ class WorkManager(tk.Tk):
         self.columnconfigure(0, weight=1)
 
         # Set the overall fontsize to 15 instead of 10.
-        font.nametofont("TkDefaultFont").configure(size=24)
+        font.nametofont("TkDefaultFont").configure(size=16)
 
 
         container = ttk.Frame(self)
