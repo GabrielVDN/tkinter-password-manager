@@ -51,14 +51,35 @@ class Settings(ttk.Frame):
         )
         tax_label.grid(row=2, column=2)
 
-        settings_btn = ttk.Button(
+        extras_label = ttk.Label(
+            self, text="Add your extra's:", style="Background.TLabel"
+        )
+        extras_label.grid(row=3, column=0, sticky="W")
+
+        extras_entry = ttk.Entry(
+            self,
+            width=18,
+            font=("TkDefaultFont", 14)
+        )
+        extras_entry.grid(row=3, column=1)
+
+        home_btn = ttk.Button(
             self,
             text="Home",
             command=show_home,
             cursor="hand2",
             style="Background.TButton"
         )
-        settings_btn.grid()
+        home_btn.grid(row=4, column=0, sticky="EW")
+
+        add_place_btn = ttk.Button(
+            self,
+            text="Add Place",
+            command=lambda: [],
+            cursor="hand2",
+            style="Background.TButton"
+        )
+        add_place_btn.grid(row=4, column=1, sticky="EW")
 
         for child in self.winfo_children():
             child.grid_configure(padx=12, pady=12)
