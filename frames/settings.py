@@ -10,76 +10,89 @@ class Settings(ttk.Frame):
         # Set the widget's background.
         self["style"] = "Background.TFrame"
 
-        work_label = ttk.Label(
+        label_workplace = ttk.Label(
             self, text="Add work place:", style="Background.TLabel"
         )
-        work_label.grid(row=0, column=0, sticky="W")
+        label_workplace.grid(row=0, column=0, sticky="W")
 
-        work_entry = ttk.Entry(
+        self.entry_workplace = ttk.Entry(
             self,
             width=18,
+            textvariable=controller.workplace,
             font=("TkDefaultFont", 14)
         )
-        work_entry.grid(row=0, column=1)
+        self.entry_workplace.grid(row=0, column=1)
 
-        money_label = ttk.Label(
+        label_maney = ttk.Label(
             self, text="Add money/hour:", style="Background.TLabel"
         )
-        money_label.grid(row=1, column=0, sticky="W")
+        label_maney.grid(row=1, column=0, sticky="W")
 
-        money_entry = ttk.Entry(
+        self.entry_money = ttk.Entry(
             self,
             width=18,
+            textvariable=controller.money,
             font=("TkDefaultFont", 14)
         )
-        money_entry.grid(row=1, column=1)
+        self.entry_money.grid(row=1, column=1)
 
-        tax_label = ttk.Label(
+        label_tax = ttk.Label(
             self, text="Add tax in %:", style="Background.TLabel"
         )
-        tax_label.grid(row=2, column=0, sticky="W")
+        label_tax.grid(row=2, column=0, sticky="W")
 
-        tax_entry = ttk.Entry(
+        self.entry_tax = ttk.Entry(
             self,
             width=18,
+            textvariable=controller.tax,
             font=("TkDefaultFont", 14)
         )
-        tax_entry.grid(row=2, column=1)
+        self.entry_tax.grid(row=2, column=1)
 
-        tax_label = ttk.Label(
+        label_percent = ttk.Label(
             self, text="%", style="Background.TLabel"
         )
-        tax_label.grid(row=2, column=2)
+        label_percent.grid(row=2, column=2)
 
-        extras_label = ttk.Label(
+        label_extras = ttk.Label(
             self, text="Add your extra's:", style="Background.TLabel"
         )
-        extras_label.grid(row=3, column=0, sticky="W")
+        label_extras.grid(row=3, column=0, sticky="W")
 
-        extras_entry = ttk.Entry(
+        self.entry_extra = ttk.Entry(
             self,
             width=18,
+            textvariable=controller.extra,
             font=("TkDefaultFont", 14)
         )
-        extras_entry.grid(row=3, column=1)
+        self.entry_extra.grid(row=3, column=1)
 
-        home_btn = ttk.Button(
+        btn_home = ttk.Button(
             self,
             text="Home",
             command=show_home,
             cursor="hand2",
             style="Background.TButton"
         )
-        home_btn.grid(row=4, column=0, sticky="EW")
+        btn_home.grid(row=4, column=0, sticky="EW")
 
-        add_place_btn = ttk.Button(
+        btn_add_place = ttk.Button(
             self,
             text="Add Place",
-            command=lambda: [print("Added place")],
+            command=lambda: [
+                print(f"Added place: {controller.workplace.get()}, {controller.money.get()}, {controller.tax.get()}, {controller.extra.get()}"),
+                self.empty_entrys()
+            ],
             cursor="hand2",
             style="Background.TButton"
         )
-        add_place_btn.grid(row=4, column=1, sticky="EW")
+        btn_add_place.grid(row=4, column=1, sticky="EW")
 
         for child in self.winfo_children():
             child.grid_configure(padx=12, pady=12)
+
+    def empty_entrys(self):
+        self.entry_workplace.delete(0,"end")
+        self.entry_money.delete(0,"end")
+        self.entry_tax.delete(0,"end")
+        self.entry_extra.delete(0,"end")

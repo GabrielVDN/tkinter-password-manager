@@ -41,6 +41,11 @@ class WorkManager(tk.Tk):
         # Set the overall fontsize to 15 instead of 10.
         font.nametofont("TkDefaultFont").configure(size=16)
 
+        # All needed vars
+        self.workplace = tk.StringVar()
+        self.money = tk.StringVar()
+        self.tax = tk.StringVar()
+        self.extra = tk.StringVar()
 
         container = ttk.Frame(self)
         container.grid()
