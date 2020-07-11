@@ -13,7 +13,7 @@ class Settings(ttk.Frame):
         work_label = ttk.Label(
             self, text="Add work place:", style="Background.TLabel"
         )
-        work_label.grid(row=0, column=0)
+        work_label.grid(row=0, column=0, sticky="W")
 
         work_entry = ttk.Entry(
             self,
@@ -25,7 +25,7 @@ class Settings(ttk.Frame):
         money_label = ttk.Label(
             self, text="Add money/hour:", style="Background.TLabel"
         )
-        money_label.grid(row=1, column=0)
+        money_label.grid(row=1, column=0, sticky="W")
 
         money_entry = ttk.Entry(
             self,
@@ -37,11 +37,11 @@ class Settings(ttk.Frame):
         tax_label = ttk.Label(
             self, text="Add tax in %:", style="Background.TLabel"
         )
-        tax_label.grid(row=2, column=0)
+        tax_label.grid(row=2, column=0, sticky="W")
 
         tax_entry = ttk.Entry(
             self,
-            width=14,
+            width=18,
             font=("TkDefaultFont", 14)
         )
         tax_entry.grid(row=2, column=1)
