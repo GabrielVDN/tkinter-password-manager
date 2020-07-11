@@ -18,25 +18,28 @@ class Home(ttk.Frame):
             self,
             values=workplaces,
             state="readonly",
-            font=("TkDefaultFont", 14),
+            font=("TkDefaultFont", 16),
             style="Background.TCombobox"
         )
         select_workplace.grid(row=0, column=0)
         select_workplace.current(0)
 
-        work_btn = ttk.Button(
+        settings_btn = ttk.Button(
             self,
             text="Settings",
             command=show_settings,
             cursor="hand2",
+            width=9,
             style="Background.TButton"
         )
-        work_btn.grid(row=0, column=1)
+        settings_btn.grid(row=0, column=1)
 
         period_label = ttk.Label(
-            self, text="Period:", style="Background.TLabel"
+            self,
+            text="Period:",
+            style="Background.TLabel"
         )
-        period_label.grid(row=1, column=0)
+        period_label.grid(row=1, column=0, sticky="W")
 
         def showCal() : 
             # Create a GUI window 
@@ -68,6 +71,7 @@ class Home(ttk.Frame):
             text="Calendar",
             command=showCal,
             cursor="hand2",
+            width=9,
             style="Background.TButton"
         )
         cal_btn.grid(row=1, column=1)

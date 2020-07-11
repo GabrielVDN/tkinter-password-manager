@@ -10,10 +10,17 @@ class Settings(ttk.Frame):
         # Set the widget's background.
         self["style"] = "Background.TFrame"
 
-        label = ttk.Label(
-            self, text="Settings", style="Background.TLabel"
+        work_label = ttk.Label(
+            self, text="Add work place:", style="Background.TLabel"
         )
-        label.grid()
+        work_label.grid(row=0, column=0)
+
+        work_entry = ttk.Entry(
+            self,
+            width=18,
+            font=("TkDefaultFont", 14)
+        )
+        work_entry.grid(row=0, column=1)
 
         settings_btn = ttk.Button(
             self,
