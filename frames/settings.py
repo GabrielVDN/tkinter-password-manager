@@ -75,7 +75,7 @@ class Settings(ttk.Frame):
         add_place_btn = ttk.Button(
             self,
             text="Add Place",
-            command=lambda: [],
+            command=lambda: [print("Added place")],
             cursor="hand2",
             style="Background.TButton"
         )
