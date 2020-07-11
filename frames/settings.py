@@ -22,6 +22,18 @@ class Settings(ttk.Frame):
         )
         work_entry.grid(row=0, column=1)
 
+        money_label = ttk.Label(
+            self, text="Add money/hour:", style="Background.TLabel"
+        )
+        money_label.grid(row=1, column=0)
+
+        money_entry = ttk.Entry(
+            self,
+            width=18,
+            font=("TkDefaultFont", 14)
+        )
+        money_entry.grid(row=1, column=1)
+
         settings_btn = ttk.Button(
             self,
             text="Home",
