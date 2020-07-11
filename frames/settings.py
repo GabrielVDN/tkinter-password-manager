@@ -34,6 +34,23 @@ class Settings(ttk.Frame):
         )
         money_entry.grid(row=1, column=1)
 
+        tax_label = ttk.Label(
+            self, text="Add tax in %:", style="Background.TLabel"
+        )
+        tax_label.grid(row=2, column=0)
+
+        tax_entry = ttk.Entry(
+            self,
+            width=14,
+            font=("TkDefaultFont", 14)
+        )
+        tax_entry.grid(row=2, column=1)
+
+        tax_label = ttk.Label(
+            self, text="%", style="Background.TLabel"
+        )
+        tax_label.grid(row=2, column=2)
+
         settings_btn = ttk.Button(
             self,
             text="Home",
