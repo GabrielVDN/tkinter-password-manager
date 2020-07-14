@@ -80,7 +80,7 @@ class Settings(ttk.Frame):
             self,
             text="Add Place",
             command=lambda: [
-                print(f"Added place:\n\t{controller.workplace.get()},\n\t{controller.money.get()},\n{controller.tax.get()},\n{controller.extra.get()}"),
+                print(f"Added place:\n\t{controller.workplace.get()},\n\t{controller.money.get()},\n\t{controller.tax.get()},\n{controller.extra.get()}"),
                 self.empty_entrys()
             ],
             cursor="hand2",
