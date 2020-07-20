@@ -68,6 +68,8 @@ class Settings(ttk.Frame):
         self.entry_extra.grid(row=3, column=1)
 
         tframe = ttk.Frame(self)
+        # Set the frames background.
+        tframe["style"] = "Background.TFrame"
         tframe.grid(row=4, columnspan=4)
 
         btn_home = ttk.Button(
