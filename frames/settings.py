@@ -88,6 +88,15 @@ class Settings(ttk.Frame):
         )
         btn_add_place.grid(row=4, column=1, sticky="EW")
 
+        btn_delete_place = ttk.Button(
+            self,
+            text="Delete Place",
+            command=lambda: [],
+            cursor="hand2",
+            style="Background.TButton"
+        )
+        btn_delete_place.grid(row=4, column=2, sticky="EW")
+
         for child in self.winfo_children():
             child.grid_configure(padx=12, pady=12)
 
