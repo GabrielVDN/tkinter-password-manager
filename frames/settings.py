@@ -67,6 +67,9 @@ class Settings(ttk.Frame):
         )
         self.entry_extra.grid(row=3, column=1)
 
+        tframe = ttk.Frame(self)
+        tframe.grid(row=1, columnspan=4, padx=10, pady=10)
+
         btn_home = ttk.Button(
             self,
             text="Home",
