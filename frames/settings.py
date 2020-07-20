@@ -68,19 +68,19 @@ class Settings(ttk.Frame):
         self.entry_extra.grid(row=3, column=1)
 
         tframe = ttk.Frame(self)
-        tframe.grid(row=1, columnspan=4, padx=10, pady=10)
+        tframe.grid(row=4, columnspan=4)
 
         btn_home = ttk.Button(
-            self,
+            tframe,
             text="Home",
             command=show_home,
             cursor="hand2",
             style="Background.TButton"
         )
-        btn_home.grid(row=4, column=0, sticky="EW")
+        btn_home.grid(row=0, column=0, sticky="EW")
 
         btn_add_place = ttk.Button(
-            self,
+            tframe,
             text="Add Place",
             command=lambda: [
                 print(f"Added place:\n\t{controller.workplace.get()},\n\t{controller.money.get()},\n\t{controller.tax.get()},\n\t{controller.extra.get()}"),
@@ -89,18 +89,21 @@ class Settings(ttk.Frame):
             cursor="hand2",
             style="Background.TButton"
         )
-        btn_add_place.grid(row=4, column=1, sticky="EW")
+        btn_add_place.grid(row=0, column=1, sticky="EW")
 
         btn_delete_place = ttk.Button(
-            self,
+            tframe,
             text="Delete Place",
             command=lambda: [],
             cursor="hand2",
             style="Background.TButton"
         )
-        btn_delete_place.grid(row=4, column=2, sticky="EW")
+        btn_delete_place.grid(row=0, column=2, sticky="EW")
 
         for child in self.winfo_children():
+            child.grid_configure(padx=12, pady=12)
+            
+        for child in tframe.winfo_children():
             child.grid_configure(padx=12, pady=12)
 
     def empty_entrys(self):
