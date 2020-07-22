@@ -76,5 +76,13 @@ class Home(ttk.Frame):
         )
         cal_btn.grid(row=1, column=1)
 
+        get_btn = ttk.Button(
+            self,
+            text="Get",
+            cursor="hand2",
+            style="Background.TButton"
+        )
+        get_btn.grid(row=2, columnspan=2, sticky="EW")
+
         for child in self.winfo_children():
             child.grid_configure(padx=12, pady=12)
