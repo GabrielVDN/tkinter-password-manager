@@ -47,7 +47,9 @@ class Home(ttk.Frame):
             # Set the background colour of GUI window 
             new_gui.config(background = "white") 
             # set the name of tkinter GUI window  
-            new_gui.title("CALENDER") 
+            new_gui.title("CALENDER")
+
+            
             
             for child in new_gui.winfo_children():
                 child.grid_configure(padx=12, pady=12)
