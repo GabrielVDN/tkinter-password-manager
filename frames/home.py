@@ -48,17 +48,6 @@ class Home(ttk.Frame):
             new_gui.config(background = "white") 
             # set the name of tkinter GUI window  
             new_gui.title("CALENDER") 
-            # Get the current year with the datetime module
-            fetch_year = datetime.datetime.now().year
-            # calendar method of calendar module return 
-            # the calendar of the given year . 
-            cal_content = calendar.calendar(fetch_year) 
-            # Create a label for showing the content of the calender 
-            cal_year = ttk.Label(new_gui, text = cal_content, font ="Consolas 10 bold") 
-            # grid method is used for placing  
-            # the widgets at respective positions  
-            # in table like structure. 
-            cal_year.grid(row = 5, column = 1, padx = 20) 
             
             for child in new_gui.winfo_children():
                 child.grid_configure(padx=12, pady=12)
