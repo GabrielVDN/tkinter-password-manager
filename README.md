@@ -1,4 +1,4 @@
-# tkinter-work-manager
+# tkinter-passsword-manager
 
 This project is a Tkinter GUI of a work managing tool.
 <br>
