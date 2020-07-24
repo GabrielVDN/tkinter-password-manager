@@ -10,7 +10,7 @@ windll.shcore.SetProcessDpiAwareness(1)
 
 
 # Create a Tkinter Widget.
-class PasswordManager(tk.Tk):
+class PasswordManager(tk.Tk): 
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
 
@@ -21,8 +21,6 @@ class PasswordManager(tk.Tk):
         style = ttk.Style()
         style.theme_use("clam")
 
-        # Set the widget's background.
-        self["background"] = "white"
         # Give the Widget a name.
         self.title("Password Manager")
         # Give the Widget a size.
@@ -31,7 +29,7 @@ class PasswordManager(tk.Tk):
         self.columnconfigure(0, weight=1)
 
         # Set the overall fontsize to 15 instead of 10.
-        font.nametofont("TkDefaultFont").configure(size=20)
+        font.nametofont("TkDefaultFont").configure(size=16)
 
         # Create all needed tk.-variables.
         self.login = tk.StringVar(value="Log In")

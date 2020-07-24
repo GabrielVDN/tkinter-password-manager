@@ -7,9 +7,6 @@ class List(ttk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
 
-        # Give the Widget a name.
-        # self.title("List Of Credentials")
-
 
         label_1 = ttk.Label(
             self, text="Double Click To Copy Password"
@@ -18,4 +15,4 @@ class List(ttk.Frame):
 
 
         for child in self.winfo_children():
-            child.grid_configure(padx=12, pady=12)
+            child.grid_configure(padx=8, pady=8)

@@ -5,12 +5,9 @@ from tkinter import ttk
 class Add(ttk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
-        self.controller = controller    
-
-
-        # # Give the Widget a name.
-        # self.title("Add Credentials")
+        self.controller = controller
         
+
         # Center your Frame in the middle-top.
         self.columnconfigure(0, weight=1)
 
@@ -48,7 +45,15 @@ class Add(ttk.Frame):
             font=("TkDefaultFont", 16)
         )
         entry_password.grid(row=5, column=0)
+
+        btn_add = ttk.Button(
+            self,
+            text="Add To Manager",
+            cursor="hand2",
+            width=18
+        )
+        btn_add.grid(row=6, column=0)
         
 
         for child in self.winfo_children():
-            child.grid_configure(padx=12, pady=12)
+            child.grid_configure(padx=8, pady=8)
