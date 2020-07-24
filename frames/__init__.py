@@ -1,2 +1,4 @@
 from frames.home import Home
-from frames.settings import Settings
+from frames.add import Add
+from frames.list import List
+from frames.search import Search
