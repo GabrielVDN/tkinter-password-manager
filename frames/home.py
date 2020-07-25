@@ -26,7 +26,7 @@ class Home(ttk.Frame):
         )
         btn_submit.grid(row=2, columnspan=3)
 
-        image_add = tk.PhotoImage(file="frames\\add.gif").zoom(2)
+        image_add = tk.PhotoImage(file="frames\\add.gif", width=48, height=48)
         btn_add = ttk.Button(
             self,
             compound="top",
@@ -37,7 +37,7 @@ class Home(ttk.Frame):
         )
         btn_add.grid(row=3, column=0)
 
-        image_list = tk.PhotoImage(file="frames\\list.gif").zoom(2)
+        image_list = tk.PhotoImage(file="frames\\list.gif", width=48, height=48)
         btn_list = ttk.Button(
             self,
             compound="top",
@@ -48,7 +48,7 @@ class Home(ttk.Frame):
         )
         btn_list.grid(row=3, column=1)
 
-        image_search = tk.PhotoImage(file="frames\\search.gif").zoom(2)
+        image_search = tk.PhotoImage(file="frames\\search.gif", width=48, height=48)
         btn_search = ttk.Button(
             self,
             compound="top",
