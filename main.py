@@ -14,7 +14,8 @@ class PasswordManager(tk.Tk):
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
 
-        container = ttk.Frame(self)
+        container = ttk.Frame(self).
+        
         container.grid()
 
         # Set the style to 'clam'.

@@ -35,14 +35,11 @@ class Home(ttk.Frame):
         
         # Create a new frame for the buttons.
         tframe = ttk.Frame(self)
-        tframe.grid(row=3, columnspan=4)
+        tframe.grid(row=3, columnspan=4, pady=80)
 
-        image_add = tk.PhotoImage(file="frames\\add.png").subsample(4)
         btn_add = ttk.Button(
             tframe,
-            compound="top",
-            image=image_add,
-            text="Add",
+            text=" 📝\nAdd",
             command=lambda: controller.show_frame("Add"),
             cursor="hand2",
         )
@@ -51,20 +48,15 @@ class Home(ttk.Frame):
         image_list = tk.PhotoImage(file="frames\\list.png")
         btn_list = ttk.Button(
             tframe,
-            compound="top",
-            text="List",
-            image=image_list,
+            text="📃\nList",
             command=lambda: controller.show_frame("List"),
             cursor="hand2",
         )
         btn_list.grid(row=0, column=1)
 
-        image_search = tk.PhotoImage(file="frames\\search.png")
         btn_search = ttk.Button(
             tframe,
-            compound="top",
-            image=image_search,
-            text="Search",
+            text="  🔍\nSearch",
             command=lambda: controller.show_frame("Search"),
             cursor="hand2",
         )
@@ -72,4 +64,4 @@ class Home(ttk.Frame):
 
             
         for child in tframe.winfo_children():
-            child.grid_configure(padx=8, pady=8)
+            child.grid_configure(padx=12, pady=12)
