@@ -45,7 +45,6 @@ class Home(ttk.Frame):
         )
         btn_add.grid(row=0, column=0)
 
-        image_list = tk.PhotoImage(file="frames\\list.png")
         btn_list = ttk.Button(
             tframe,
             text="📃\nList",
