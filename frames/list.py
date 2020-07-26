@@ -24,6 +24,11 @@ class List(ttk.Frame):
         )
         btn_back.grid(row=0, column=1, sticky="E")
 
+        tree = ttk.Treeview(
+            self,
+        )
+        tree.grid(row=1, columnspan=2)
+
 
         for child in self.winfo_children():
             child.grid_configure(padx=8, pady=8)
