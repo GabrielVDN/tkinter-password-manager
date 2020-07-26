@@ -7,6 +7,8 @@ class Home(ttk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
 
+        # Center your Frame in the middle-top.
+        self.columnconfigure(0, weight=1)
 
         label_1 = ttk.Label(
             self, textvariable=controller.login
@@ -26,39 +28,48 @@ class Home(ttk.Frame):
         )
         btn_submit.grid(row=2, columnspan=3)
 
-        image_add = tk.PhotoImage(file="frames\\add.gif", width=48, height=48)
+            
+        for child in self.winfo_children():
+            child.grid_configure(padx=8, pady=8)
+
+        
+        # Create a new frame for the buttons.
+        tframe = ttk.Frame(self)
+        tframe.grid(row=3, columnspan=4)
+
+        image_add = tk.PhotoImage(file="frames\\add.png").subsample(4)
         btn_add = ttk.Button(
-            self,
+            tframe,
             compound="top",
             image=image_add,
             text="Add",
             command=lambda: controller.show_frame("Add"),
             cursor="hand2",
         )
-        btn_add.grid(row=3, column=0)
+        btn_add.grid(row=0, column=0)
 
-        image_list = tk.PhotoImage(file="frames\\list.gif", width=48, height=48)
+        image_list = tk.PhotoImage(file="frames\\list.png")
         btn_list = ttk.Button(
-            self,
+            tframe,
             compound="top",
             text="List",
             image=image_list,
             command=lambda: controller.show_frame("List"),
             cursor="hand2",
         )
-        btn_list.grid(row=3, column=1)
+        btn_list.grid(row=0, column=1)
 
-        image_search = tk.PhotoImage(file="frames\\search.gif", width=48, height=48)
+        image_search = tk.PhotoImage(file="frames\\search.png")
         btn_search = ttk.Button(
-            self,
+            tframe,
             compound="top",
             image=image_search,
             text="Search",
             command=lambda: controller.show_frame("Search"),
             cursor="hand2",
         )
-        btn_search.grid(row=3, column=2)
+        btn_search.grid(row=0, column=2)
 
             
-        for child in self.winfo_children():
+        for child in tframe.winfo_children():
             child.grid_configure(padx=8, pady=8)
