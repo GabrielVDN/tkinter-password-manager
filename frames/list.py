@@ -24,7 +24,9 @@ class List(ttk.Frame):
         btn_back.grid(row=0, column=1, sticky="E")
 
         scroll = ttk.Scrollbar(self, orient='vertical', takefocus=True)
-        self.tree = ttk.Treeview(self, columns=headings, show="headings")
+        self.tree = ttk.Treeview(
+            self, columns=["Service", "Username", "Password"], show="headings"
+        )
         scroll.config(command=self.tree.yview)
         self.tree.configure(yscroll=scroll.set)
 
@@ -32,7 +34,7 @@ class List(ttk.Frame):
         self.tree.grid(row=1, column=1)
 
         # Adding headings to the columns and resp. cmd's
-        for heading in headings:
+        for heading in ["Service", "Username", "Password"]:
             self.tree.heading(
                 heading, text=heading,
                 command=lambda c=heading: self.sortby(self.tree, c, 0))
