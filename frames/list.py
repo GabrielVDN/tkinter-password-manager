@@ -13,27 +13,23 @@ class List(ttk.Frame):
         # Adding the Treeview
         label_1 = ttk.Label(self, text="Double Click to copy password")
         label_1.grid(row=0, column=0)
-        
+
         btn_back = ttk.Button(
-            tframe1,
+            self,
             text="🔙",
             command=lambda: controller.show_frame("Home"),
             cursor="hand2",
             width=3
         )
-        btn_back.pack(side='left', padx=10,pady=10)
+        btn_back.grid(row=0, column=1, sticky="E")
 
-
-        tframe2=tk.Frame(self)
-        tframe2.pack(side='bottom')
-
-        scroll = ttk.Scrollbar(tframe2, orient='vertical', takefocus=True)
-        self.tree = ttk.Treeview(tframe2, columns=headings, show="headings")
+        scroll = ttk.Scrollbar(self, orient='vertical', takefocus=True)
+        self.tree = ttk.Treeview(self, columns=headings, show="headings")
         scroll.config(command=self.tree.yview)
         self.tree.configure(yscroll=scroll.set)
 
-        scroll.pack(side='right', fill='y')
-        self.tree.pack(side='left', fill='both', expand=1)
+        scroll.grid(row=1, columnspan=2)
+        self.tree.grid(row=1, column=1)
 
         # Adding headings to the columns and resp. cmd's
         for heading in headings:
