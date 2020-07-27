@@ -37,7 +37,7 @@ class List(ttk.Frame):
         for heading in ["Service", "Username*", "Password"]:
             self.tree.heading(
                 heading, text=heading)
-            self.tree.column(heading, width=400)
+            self.tree.column(heading, width=375)
 
 
         for child in self.winfo_children():

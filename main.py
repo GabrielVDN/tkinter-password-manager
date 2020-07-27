@@ -24,7 +24,7 @@ class PasswordManager(tk.Tk):
         # Give the Widget a name.
         self.title("Password Manager")
         # Give the Widget a size.
-        self.geometry("1222x500")
+        self.geometry("1226x500")
         # Center your Frame in the middle-top.
         self.columnconfigure(0, weight=1)
 
