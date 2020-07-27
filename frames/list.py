@@ -23,22 +23,33 @@ class List(ttk.Frame):
         )
         btn_back.grid(row=0, column=1, sticky="E")
 
-        scroll = ttk.Scrollbar(self, orient='vertical', takefocus=True)
-        self.tree = ttk.Treeview(
-            self, columns=["Service", "Username*", "Password"], show="headings"
+        tree = ttk.Treeview(
+            self, height=18, columns=["Service", "Username*", "Password"], show="headings"
         )
-        scroll.config(command=self.tree.yview)
-        self.tree.configure(yscroll=scroll.set)
+        tree.grid(row=1, column=0)
 
-        self.tree.grid(row=1, column=0)
-        scroll.grid(row=1, column=1, sticky="NS")
+
+        tree.insert('', 'end', values=['1a', '1b', '1c'])
+        tree.insert('', 'end', values=['2a', '2b', '2c'])
+        tree.insert('', 'end', values=['3a', '3b', '3c'])
+        tree.insert('', 'end', values=['4a', '4b', '4c'])
+        tree.insert('', 'end', values=['5a', '5b', '5c'])
+        tree.insert('', 'end', values=['6a', '6b', '6c'])
+        tree.insert('', 'end', values=['7a', '7b', '7c'])
+        tree.insert('', 'end', values=['8a', '8b', '8c'])
+        tree.insert('', 'end', values=['9a', '9b', '9c'])
+        tree.insert('', 'end', values=['10a', '10b', '10c'])
+        tree.insert('', 'end', values=['11a', '11b', '11c'])
+        tree.insert('', 'end', values=['12a', '12b', '12c'])
+        tree.insert('', 'end', values=['13a', '13b', '13c'])
+
 
         # Adding headings to the columns and resp. cmd's
         for heading in ["Service", "Username*", "Password"]:
-            self.tree.heading(
+            tree.heading(
                 heading, text=heading)
-            self.tree.column(heading, width=375)
+            tree.column(heading, width=375)
 
 
         for child in self.winfo_children():
-            child.grid_configure(padx=8, pady=8)
+            child.grid_configure(padx=(12,0), pady=8)
