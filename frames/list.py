@@ -10,13 +10,10 @@ class List(ttk.Frame):
         # Center your Frame in the middle-top.
         self.columnconfigure(0, weight=1)
 
-        tframe1=tk.Frame(self)
-        tframe1.pack(side='top')
-        headings = ["Service", "Username"]
-
         # Adding the Treeview
-        tk.Label(tframe1, text="Double Click to copy password",
-                bd=2).pack(side='left', padx=10,pady=10)
+        label_1 = ttk.Label(self, text="Double Click to copy password")
+        label_1.grid(row=0, column=0)
+        
         btn_back = ttk.Button(
             tframe1,
             text="🔙",
@@ -44,3 +41,7 @@ class List(ttk.Frame):
                 heading, text=heading,
                 command=lambda c=heading: self.sortby(self.tree, c, 0))
             self.tree.column(heading, width=400)
+
+
+        for child in self.winfo_children():
+            child.grid_configure(padx=8, pady=8)
