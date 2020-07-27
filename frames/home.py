@@ -13,29 +13,25 @@ class Home(ttk.Frame):
         label_1 = ttk.Label(
             self, textvariable=controller.login
         )
-        label_1.grid(row=0, columnspan=3)
+        label_1.grid(row=0, columnspan=3, padx=12, pady=(30,12))
 
         entry_password = ttk.Entry(
             self, width=30,
             font=("TkDefaultFont", 16), show='*'
         )
-        entry_password.grid(row=1, columnspan=3)
+        entry_password.grid(row=1, columnspan=3, padx=12, pady=12)
 
         btn_submit = ttk.Button(
             self,
             text="Submit",
             cursor="hand2",
         )
-        btn_submit.grid(row=2, columnspan=3)
-
-            
-        for child in self.winfo_children():
-            child.grid_configure(padx=8, pady=8)
+        btn_submit.grid(row=2, columnspan=3, padx=12, pady=12)
 
         
         # Create a new frame for the buttons.
         tframe = ttk.Frame(self)
-        tframe.grid(row=3, columnspan=4, pady=80)
+        tframe.grid(row=3, columnspan=4, pady=60)
 
         btn_add = ttk.Button(
             tframe,
