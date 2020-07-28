@@ -23,12 +23,22 @@ class List(ttk.Frame):
         )
         btn_back.grid(row=0, column=1, sticky="E")
 
+        
+        # Create a new frame for the treeview.
+        tframe = ttk.Frame(self)
+        tframe.grid(row=1, columnspan=2)
+
         tree = ttk.Treeview(
-            self, height=18, columns=["Service", "Username*", "Password"], show="headings"
+            tframe, height=18, columns=["Service", "Username*", "Password"], show="headings"
         )
-        tree.grid(row=1, column=0)
+        tree.pack(side='left')
 
+        vsb = ttk.Scrollbar(tframe, orient="vertical", command=tree.yview)
+        vsb.pack(side='right', fill='y')
 
+        tree.configure(yscrollcommand=vsb.set)
+
+        tree.heading("1", text="Account")
         tree.insert('', 'end', values=['1a', '1b', '1c'])
         tree.insert('', 'end', values=['2a', '2b', '2c'])
         tree.insert('', 'end', values=['3a', '3b', '3c'])
