@@ -12,7 +12,7 @@ class Search(ttk.Frame):
 
         entry_search = ttk.Entry(
             self,
-            width=35,
+            width=48,
             font=("TkDefaultFont", 16)
         )
         entry_search.grid(row=0, column=0)
@@ -34,5 +34,29 @@ class Search(ttk.Frame):
         btn_back.grid(row=0, column=2, sticky="E")
 
 
+        # Create a new frame for the treeview.
+        tframe = ttk.Frame(self)
+        tframe.grid(row=1, columnspan=3)
+
+        columns = ['id', 'Service', 'Username*', 'Password']
+
+        tree = ttk.Treeview(
+            tframe, columns=columns, height=18, show="headings"
+        )
+        tree.column("id", width=30)
+
+        for col in columns[1:]:
+            tree.column(col, width=350)
+            tree.heading(col, text=col)
+
+        tree.pack(side="left", fill="y")
+
+        scrollbar = ttk.Scrollbar(tframe, orient='vertical')
+        scrollbar.configure(command=tree.yview)
+        scrollbar.pack(side="right", fill="y")
+
+        tree.config(yscrollcommand=scrollbar.set)
+
+        
         for child in self.winfo_children():
             child.grid_configure(padx=8, pady=8)
