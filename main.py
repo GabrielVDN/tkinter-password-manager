@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 import tkinter.font as font
+from frames.login import Login
 from frames.home import Home
 from frames.add import Add
 from frames.list import List
@@ -30,10 +31,13 @@ class PasswordManager(tk.Tk):
         font.nametofont("TkDefaultFont").configure(size=16)
 
         # Create all needed tk.-variables.
-        self.login = tk.StringVar(value="  Log In")
+        self.login1 = tk.StringVar(
+            value="Choose a log-in password\nfor this Password Manager."
+        )
+        self.login2 = tk.StringVar(value="Log In")
 
         self.frames = {}
-        for F in (Home, Add, List, Search):
+        for F in (Login,Home, Add, List, Search):
             page_name = F.__name__
             frame = F(parent=container, controller=self)
             self.frames[page_name] = frame
@@ -43,7 +47,10 @@ class PasswordManager(tk.Tk):
             # will be the one that is visible.
             frame.grid(row=0, column=0, sticky="nsew")
 
-        self.show_frame("Home")
+        if True:
+            self.show_frame("Login")
+        else:
+            self.show_frame("Home")
 
     def show_frame(self, page_name):
         '''Show a frame for the given page name'''

@@ -11,7 +11,7 @@ class Home(ttk.Frame):
         self.columnconfigure(0, weight=1)
 
         label_1 = ttk.Label(
-            self, textvariable=controller.login
+            self, textvariable=controller.login2
         )
         label_1.grid(row=0, columnspan=3, padx=12, pady=(50,12))
 
@@ -66,7 +66,7 @@ class Home(ttk.Frame):
             child.grid_configure(padx=12, pady=12)
 
     def submit(self):
-        self.controller.login.set("logged in")
+        self.controller.login2.set("logged in")
         
         self.entry_password.delete(0, 'end')
         self.entry_password['state'] = 'disabled'
