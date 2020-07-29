@@ -13,7 +13,7 @@ class Home(ttk.Frame):
         label_1 = ttk.Label(
             self, textvariable=controller.login
         )
-        label_1.grid(row=0, columnspan=3, padx=12, pady=(30,12))
+        label_1.grid(row=0, columnspan=3, padx=12, pady=(50,12))
 
         entry_password = ttk.Entry(
             self, width=30,
@@ -31,7 +31,7 @@ class Home(ttk.Frame):
         
         # Create a new frame for the buttons.
         tframe = ttk.Frame(self)
-        tframe.grid(row=3, columnspan=4, pady=60)
+        tframe.grid(row=3, columnspan=4, pady=(70,0))
 
         btn_add = ttk.Button(
             tframe,
