@@ -30,7 +30,7 @@ class PasswordManager(tk.Tk):
         font.nametofont("TkDefaultFont").configure(size=16)
 
         # Create all needed tk.-variables.
-        self.login = tk.StringVar(value="Log In")
+        self.login = tk.StringVar(value="  Log In")
 
         self.frames = {}
         for F in (Home, Add, List, Search):
