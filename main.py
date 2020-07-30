@@ -40,6 +40,12 @@ class PasswordManager(tk.Tk):
         self.login2_password = tk.StringVar()
         self.login3_password = tk.StringVar()
 
+        self.add_service = tk.StringVar()
+        self.add_username = tk.StringVar()
+        self.add_password = tk.StringVar()
+
+
+
         self.frames = {}
         for F in (Login,Home, Add, List, Search):
             page_name = F.__name__

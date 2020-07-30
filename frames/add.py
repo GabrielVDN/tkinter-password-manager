@@ -26,6 +26,7 @@ class Add(ttk.Frame):
         entry_service = ttk.Entry(
             self,
             width=18,
+            textvariable=controller.add_service,
             font=("TkDefaultFont", 16)
         )
         entry_service.grid(row=1, columnspan=2, padx=8, pady=(8, 18))
@@ -38,6 +39,7 @@ class Add(ttk.Frame):
         entry_username = ttk.Entry(
             self,
             width=18,
+            textvariable=controller.add_username,
             font=("TkDefaultFont", 16)
         )
         entry_username.grid(row=3, columnspan=2, padx=8, pady=(8, 18))
@@ -50,6 +52,7 @@ class Add(ttk.Frame):
         entry_password = ttk.Entry(
             self,
             width=18,
+            textvariable=controller.add_password,
             font=("TkDefaultFont", 16)
         )
         entry_password.grid(row=5, columnspan=2, padx=8, pady=(8, 18))
@@ -58,6 +61,28 @@ class Add(ttk.Frame):
             self,
             text="Add To Manager",
             cursor="hand2",
-            width=18
+            width=18,
+            command=lambda: self.add_data()
         )
         btn_add.grid(row=6, columnspan=2, padx=8, pady=(8, 18))
+
+        self.credential_nmr = tk.IntVar(value=1)
+
+
+    def add_data(self):
+        print(self.controller.add_service.get())
+        print(self.controller.add_username.get())
+        print(self.controller.add_password.get())
+        
+        data = {}
+        data[self.credential_nmr.get()] = []
+        data[self.credential_nmr.get()].append({
+            'Service': self.controller.add_service.get(),
+            'Username': self.controller.add_username.get(),
+            'Password': self.controller.add_password.get()
+        })
+
+        with open('data.txt', 'w') as outfile:
+            json.dump(data, outfile)
+
+        self.credential_nmr.set(self.credential_nmr.get() + 1)
