@@ -70,17 +70,13 @@ class Add(ttk.Frame):
 
 
     def add_data(self):
-        print(self.controller.add_service.get())
-        print(self.controller.add_username.get())
-        print(self.controller.add_password.get())
-        
         data = {}
         data[self.credential_nmr.get()] = []
         data[self.credential_nmr.get()].append({
             'Service': self.controller.add_service.get(),
             'Username': self.controller.add_username.get(),
             'Password': self.controller.add_password.get()
-        },)
+        })
 
         with open('data.txt', 'a') as outfile:
             json.dump(data, outfile,indent=2)
