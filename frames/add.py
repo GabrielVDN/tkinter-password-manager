@@ -80,9 +80,10 @@ class Add(ttk.Frame):
             'Service': self.controller.add_service.get(),
             'Username': self.controller.add_username.get(),
             'Password': self.controller.add_password.get()
-        })
+        },)
 
-        with open('data.txt', 'w') as outfile:
-            json.dump(data, outfile)
+        with open('data.txt', 'a') as outfile:
+            json.dump(data, outfile,indent=2)
+            outfile.write(',')
 
         self.credential_nmr.set(self.credential_nmr.get() + 1)
