@@ -70,6 +70,9 @@ class Add(ttk.Frame):
 
 
     def add_data(self):
+        with open('data.txt') as json_file:
+            data_list = json.load(json_file)
+
         data = {}
         data[self.credential_nmr.get()] = []
         data[self.credential_nmr.get()].append({
@@ -78,8 +81,10 @@ class Add(ttk.Frame):
             'Password': self.controller.add_password.get()
         })
 
-        with open('data.txt', 'a') as outfile:
-            json.dump(data, outfile,indent=2)
+        data_list.append(data)
+
+        with open('data.txt', 'w') as outfile:
+            json.dump(data_list, outfile,indent=2)
             outfile.write(',')
 
         self.credential_nmr.set(self.credential_nmr.get() + 1)
