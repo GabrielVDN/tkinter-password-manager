@@ -17,6 +17,7 @@ class Home(ttk.Frame):
 
         self.entry_password = ttk.Entry(
             self, width=30,
+            textvariable=controller.login3_password,
             font=("TkDefaultFont", 16), show='*'
         )
         self.entry_password.grid(row=1, columnspan=3, padx=12, pady=12)
@@ -66,12 +67,18 @@ class Home(ttk.Frame):
             child.grid_configure(padx=12, pady=12)
 
     def submit(self):
-        self.controller.login2.set("logged in")
-        
-        self.entry_password.delete(0, 'end')
-        self.entry_password['state'] = 'disabled'
-        self.btn_submit['state'] = 'disabled'
+        if self.controller.login3_password.get() ==  self.controller.login2_password.get():
+            self.controller.login2.set("logged in")
+            
+            self.entry_password.delete(0, 'end')
+            self.entry_password['state'] = 'disabled'
+            self.btn_submit['state'] = 'disabled'
 
-        self.btn_add['state'] = 'normal'
-        self.btn_list['state'] = 'normal'
-        self.btn_search['state'] = 'normal'
+            self.btn_add['state'] = 'normal'
+            self.btn_list['state'] = 'normal'
+            self.btn_search['state'] = 'normal'
+            
+        else:
+            self.controller.login2.set(
+                "Incorrect, try again."
+            )

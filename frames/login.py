@@ -17,6 +17,7 @@ class Login(ttk.Frame):
 
         self.entry_password = ttk.Entry(
             self, width=30,
+            textvariable=controller.login1_password,
             font=("TkDefaultFont", 16)
         )
         self.entry_password.grid(row=1, column=0, pady=12)
@@ -35,8 +36,14 @@ class Login(ttk.Frame):
     
     def submit(self):
         if self.x.get() == 2:
-            self.controller.show_frame("Home")
-
-        self.controller.login1.set("Repeat it!")
-        self.entry_password.delete(0, 'end')
-        self.x.set(2)
+            if self.controller.login1_password.get() ==  self.controller.login2_password.get():
+                self.controller.show_frame("Home")
+            else:
+                self.controller.login1.set(
+                    "Incorrect, try again! Or to reset;\nclose the app and open it again."
+                )
+        else:
+            self.controller.login2_password.set(self.controller.login1_password.get())
+            self.controller.login1.set("Repeat it!")
+            self.entry_password.delete(0, 'end')
+            self.x.set(2)
