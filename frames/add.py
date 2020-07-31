@@ -74,8 +74,6 @@ class Add(ttk.Frame):
         if self.controller.add_service.get().strip() != '' and self.controller.add_password.get().strip() != '':
             with open('data.txt') as json_file:
                 data_list = json.load(json_file)
-            
-            print(data_list)
 
             data = {}
             data[self.credential_nmr.get()] = []
@@ -84,12 +82,7 @@ class Add(ttk.Frame):
                 'Username': self.controller.add_username.get().strip(),
                 'Password': self.controller.add_password.get().strip()
             })
-
-            print(data)
-
             data_list.append(data)
-
-            print(data_list)
 
             with open('data.txt', 'w') as outfile:
                 json.dump(data_list, outfile, indent=2)
