@@ -57,4 +57,3 @@ class List(ttk.Frame):
 
         for i in data_list:
             print(i)
-            print()
