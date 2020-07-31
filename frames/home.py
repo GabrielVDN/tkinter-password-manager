@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
+import json
 
 
 class Home(ttk.Frame):
@@ -67,7 +68,10 @@ class Home(ttk.Frame):
             child.grid_configure(padx=12, pady=12)
 
     def submit(self):
-        if self.controller.login3_password.get() ==  self.controller.login2_password.get():
+        with open('password.txt') as json_file:
+            password = json.load(json_file)
+
+        if self.controller.login3_password.get().strip() == password:
             self.controller.login2.set("logged in")
             
             self.entry_password.delete(0, 'end')

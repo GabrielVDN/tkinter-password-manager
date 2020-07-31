@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 import tkinter.font as font
+import json
 from frames.login import Login
 from frames.home import Home
 from frames.add import Add
@@ -57,7 +58,10 @@ class PasswordManager(tk.Tk):
             # will be the one that is visible.
             frame.grid(row=0, column=0, sticky="nsew")
 
-        if True:
+        with open('password.txt') as json_file:
+            password = json.load(json_file)
+
+        if password == '':
             self.show_frame("Login")
         else:
             self.show_frame("Home")
