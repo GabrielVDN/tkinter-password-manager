@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
+import json
 
 
 class List(ttk.Frame):
@@ -50,3 +51,10 @@ class List(ttk.Frame):
 
         for child in self.winfo_children():
             child.grid_configure(padx=10, pady=10)
+  
+        with open('data.txt') as json_file:
+            data_list = json.load(json_file)
+
+        for i in data_list:
+            print(i)
+            print()
