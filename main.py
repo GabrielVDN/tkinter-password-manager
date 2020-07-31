@@ -61,7 +61,7 @@ class PasswordManager(tk.Tk):
         with open('password.txt') as json_file:
             password = json.load(json_file)
 
-        if password == '':
+        if password == "":
             self.show_frame("Login")
         else:
             self.show_frame("Home")
