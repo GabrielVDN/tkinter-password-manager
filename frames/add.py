@@ -67,27 +67,35 @@ class Add(ttk.Frame):
         )
         btn_add.grid(row=6, columnspan=2, padx=8, pady=(8, 18))
 
-        self.credential_nmr = tk.IntVar(value=1)
+        self.last_nmr = tk.IntVar() # Default; value=0
+
+        with open('data.txt') as json_file:
+                data_list = json.load(json_file)
+
+        try:
+            last_dict = data_list[-1]
+            self.last_nmr.set(list(last_dict.keys())[0])
+        except:
+            pass
 
 
     def add_data(self):
         if self.controller.add_service.get().strip() != '' and self.controller.add_password.get().strip() != '':
+            self.last_nmr.set(self.last_nmr.get() + 1)
+
             with open('data.txt') as json_file:
                 data_list = json.load(json_file)
 
             data = {}
-            data[self.credential_nmr.get()] = []
-            data[self.credential_nmr.get()].append({
+            data[self.last_nmr.get()] = {
                 'Service': self.controller.add_service.get().strip(),
                 'Username': self.controller.add_username.get().strip(),
                 'Password': self.controller.add_password.get().strip()
-            })
+            }
             data_list.append(data)
 
             with open('data.txt', 'w') as outfile:
                 json.dump(data_list, outfile, indent=2)
-
-            self.credential_nmr.set(self.credential_nmr.get() + 1)
 
             self.empty_entry()
         else:
