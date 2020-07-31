@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 import json
+from tkinter import messagebox
 
 
 class Add(ttk.Frame):
@@ -17,45 +18,45 @@ class Add(ttk.Frame):
         btn_back = ttk.Button(
             self,
             text="🔙",
-            command=lambda: controller.show_frame("Home"),
+            command=lambda: [controller.show_frame("Home"), self.empty_entry()],
             cursor="hand2",
             width=3
         )
         btn_back.grid(row=0, column=1, sticky="E", padx=8, pady=8)
 
-        entry_service = ttk.Entry(
+        self.entry_service = ttk.Entry(
             self,
             width=18,
             textvariable=controller.add_service,
             font=("TkDefaultFont", 16)
         )
-        entry_service.grid(row=1, columnspan=2, padx=8, pady=(8, 18))
+        self.entry_service.grid(row=1, columnspan=2, padx=8, pady=(8, 18))
 
         label_username = ttk.Label(
             self, text="Username"
         )
         label_username.grid(row=2, columnspan=2, padx=8, pady=8)
 
-        entry_username = ttk.Entry(
+        self.entry_username = ttk.Entry(
             self,
             width=18,
             textvariable=controller.add_username,
             font=("TkDefaultFont", 16)
         )
-        entry_username.grid(row=3, columnspan=2, padx=8, pady=(8, 18))
+        self.entry_username.grid(row=3, columnspan=2, padx=8, pady=(8, 18))
 
         label_password = ttk.Label(
             self, text="Password*"
         )
         label_password.grid(row=4, columnspan=2, padx=8, pady=8)
 
-        entry_password = ttk.Entry(
+        self.entry_password = ttk.Entry(
             self,
             width=18,
             textvariable=controller.add_password,
             font=("TkDefaultFont", 16)
         )
-        entry_password.grid(row=5, columnspan=2, padx=8, pady=(8, 18))
+        self.entry_password.grid(row=5, columnspan=2, padx=8, pady=(8, 18))
 
         btn_add = ttk.Button(
             self,
@@ -70,21 +71,36 @@ class Add(ttk.Frame):
 
 
     def add_data(self):
-        with open('data.txt') as json_file:
-            data_list = json.load(json_file)
+        if self.controller.add_service.get().strip() != '' and self.controller.add_password.get().strip() != '':
+            with open('data.txt') as json_file:
+                data_list = json.load(json_file)
+            
+            print(data_list)
 
-        data = {}
-        data[self.credential_nmr.get()] = []
-        data[self.credential_nmr.get()].append({
-            'Service': self.controller.add_service.get(),
-            'Username': self.controller.add_username.get(),
-            'Password': self.controller.add_password.get()
-        })
+            data = {}
+            data[self.credential_nmr.get()] = []
+            data[self.credential_nmr.get()].append({
+                'Service': self.controller.add_service.get().strip(),
+                'Username': self.controller.add_username.get().strip(),
+                'Password': self.controller.add_password.get().strip()
+            })
 
-        data_list.append(data)
+            print(data)
 
-        with open('data.txt', 'w') as outfile:
-            json.dump(data_list, outfile,indent=2)
-            outfile.write(',')
+            data_list.append(data)
 
-        self.credential_nmr.set(self.credential_nmr.get() + 1)
+            print(data_list)
+
+            with open('data.txt', 'w') as outfile:
+                json.dump(data_list, outfile, indent=2)
+
+            self.credential_nmr.set(self.credential_nmr.get() + 1)
+
+            self.empty_entry()
+        else:
+            messagebox.showerror("No Input", "You need to input something in Service and Password!")
+
+    def empty_entry(self):
+        self.entry_password.delete(0,'end')
+        self.entry_service.delete(0,'end')
+        self.entry_username.delete(0,'end')

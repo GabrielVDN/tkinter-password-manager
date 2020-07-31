@@ -10,24 +10,25 @@ class Search(ttk.Frame):
         # Center your Frame in the middle-top.
         self.columnconfigure(0, weight=1)
 
-        entry_search = ttk.Entry(
+        self.entry_search = ttk.Entry(
             self,
             width=48,
             font=("TkDefaultFont", 16)
         )
-        entry_search.grid(row=0, column=0)
+        self.entry_search.grid(row=0, column=0)
         
         label_search = ttk.Button(
             self,
             text="🔍",
-            width=3
+            width=3,
+            command=lambda: [self.entry_search.delete(0,'end')]
         )
         label_search.grid(row=0, column=1)
         
         btn_back = ttk.Button(
             self,
             text="🔙",
-            command=lambda: controller.show_frame("Home"),
+            command=lambda: [controller.show_frame("Home"), self.entry_search.delete(0,'end')],
             cursor="hand2",
             width=3
         )
