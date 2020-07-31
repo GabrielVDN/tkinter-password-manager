@@ -1,5 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
+import json
+from tkinter import messagebox
 
 
 class Login(ttk.Frame):
@@ -36,14 +38,24 @@ class Login(ttk.Frame):
     
     def submit(self):
         if self.x.get() == 2:
-            if self.controller.login1_password.get() ==  self.controller.login2_password.get():
+            if self.controller.login1_password.get().strip() == self.controller.login2_password.get():
+                with open('password.txt', 'w') as outfile:
+                    json.dump(self.controller.login2_password.get(), outfile, indent=2)
+
                 self.controller.show_frame("Home")
             else:
                 self.controller.login1.set(
-                    "Incorrect, try again! Or to reset;\nclose the app and open it again."
+                    "Incorrect, try again! Or to reset:\nclose the app and open it again."
                 )
+
         else:
-            self.controller.login2_password.set(self.controller.login1_password.get())
-            self.controller.login1.set("Repeat it!")
-            self.entry_password.delete(0, 'end')
-            self.x.set(2)
+            if len(self.controller.login1_password.get().strip()) >= 6:
+                self.controller.login2_password.set(self.controller.login1_password.get().strip())
+                self.controller.login1.set("Repeat it!")
+                self.entry_password.delete(0, 'end')
+                self.x.set(2)
+
+            else:
+                messagebox.showerror(
+                    "Invalid Input", "Your Password needs to be 6 or more characters!"
+                )
