@@ -14,19 +14,18 @@ windll.shcore.SetProcessDpiAwareness(1)
 try:
     with open('data.json') as json_file:
         pass
-
-    with open('password.json') as json_file:
-        pass
 except:
     data = []
     with open('data.json', 'w') as outfile:
         json.dump(data, outfile)
 
+try:
+    with open('password.json') as json_file:
+        pass
+except:
     password = ""
     with open('password.json', 'w') as outfile:
         json.dump(password, outfile)
-
-
 
 
 # Create a Tkinter Widget.
