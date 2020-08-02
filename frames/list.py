@@ -31,30 +31,54 @@ class List(ttk.Frame):
 
         columns = ['id', 'Service', 'Username*', 'Password']
 
-        tree = ttk.Treeview(
+        self.tree = ttk.Treeview(
             tframe, columns=columns, height=18, show="headings"
         )
-        tree.column("id", width=30)
+        self.tree.column("id", width=30)
 
         for col in columns[1:]:
-            tree.column(col, width=350)
-            tree.heading(col, text=col)
+            self.tree.column(col, width=350)
+            self.tree.heading(col, text=col)
 
-        tree.pack(side="left", fill="y")
+        self.tree.pack(side="left", fill="y")
 
         scrollbar = ttk.Scrollbar(tframe, orient='vertical')
-        scrollbar.configure(command=tree.yview)
+        scrollbar.configure(command=self.tree.yview)
         scrollbar.pack(side="right", fill="y")
 
-        tree.config(yscrollcommand=scrollbar.set)
+        self.tree.config(yscrollcommand=scrollbar.set)
 
 
         for child in self.winfo_children():
             child.grid_configure(padx=10, pady=10)
+
+        self.insert_data()
   
+        
+    def insert_data(self):
+        """
+        Insertion method.
+        """
         with open('data.txt') as json_file:
             data_list = json.load(json_file)
 
+        list_values = []
+        
         for i in data_list:
-            print(i)
+            tuples_values = []
+
+            for x in i.keys():
+                tuples_values.append(x)
+            for y in i.values():
+                for z in y.values():
+                    tuples_values.append(z)
+
+            list_values.append(tuple(tuples_values))
             
+            print(list_values)
+            
+        # index = iid = 0
+        # for row in tuples_values:
+        #     treeView.insert("", index, iid, values=row)
+        #     index = iid = index + 1
+                
