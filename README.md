@@ -3,7 +3,7 @@
 This project is a Tkinter GUI of a work managing tool.
 <br>
 To test it or to see the GUI download the exe and open it, this doesn't need adjustments, it's ready to go.
-![](image1.png | width=100)
+![](image1.png){:height="50%" width="50%"}
 ![](image2.png | width=100)
 ![](image3.png | width=100)
 ![](image4.png | width=100)
