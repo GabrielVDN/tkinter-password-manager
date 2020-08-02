@@ -76,5 +76,6 @@ class List(ttk.Frame):
             list_values.append(tuple(tuples_values))
         print(list_values)
             
-        for row in tuples_values:
-            self.tree.insert("", "end", values=row)                
+        # for row in tuples_values:
+        #     self.tree.insert("", "end", values=row)           
+        self.tree.insert("", "end", values=list_values[0])
