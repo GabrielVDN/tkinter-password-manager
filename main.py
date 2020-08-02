@@ -55,6 +55,8 @@ class PasswordManager(tk.Tk):
             font=[("active",  ("TkDefaultFont", 17))]
         )
 
+        style.configure('Data.Treeview', rowheight=45)
+
         # Give the Widget a name.
         self.title("Password Manager")
         # Center your Frame in the middle-top.

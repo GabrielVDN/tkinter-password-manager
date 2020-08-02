@@ -37,7 +37,7 @@ class List(ttk.Frame):
         columns = ('id', 'Service', 'Username*', 'Password')
 
         self.tree = ttk.Treeview(
-            tframe, columns=columns, height=18, show="headings"
+            tframe, columns=columns, show="headings", style='Data.Treeview'
         )
         self.tree.column("id", width=30)
 
@@ -81,7 +81,10 @@ class List(ttk.Frame):
                 
             # for row in tuples_values:
             #     self.tree.insert("", "end", values=row)
-            self.tree.insert("", "end", values=list_values[0])
+            amount = 0
+            while amount < len(list_values):
+                self.tree.insert("", "end", values=list_values[amount])
+                amount+=1
 
         except:
             messagebox.showerror(
