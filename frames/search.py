@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
+import json
 
 
 class Search(ttk.Frame):
@@ -13,6 +14,7 @@ class Search(ttk.Frame):
         self.entry_search = ttk.Entry(
             self,
             width=48,
+            textvariable=controller.search_name,
             font=("TkDefaultFont", 16)
         )
         self.entry_search.grid(row=0, column=0)
@@ -21,10 +23,14 @@ class Search(ttk.Frame):
             self,
             text="🔍",
             width=3,
-            command=lambda: [self.entry_search.delete(0,'end')]
+            command=lambda: [empty_tree(None), self.search(),self.entry_search.delete(0,'end')]
         )
         label_search.grid(row=0, column=1)
         
+        def empty_tree(event):
+            for i in self.tree.get_children():
+                self.tree.delete(i)
+
         btn_back = ttk.Button(
             self,
             text="🔙",
@@ -41,27 +47,47 @@ class Search(ttk.Frame):
 
         columns = ['id', 'Service', 'Username*', 'Password']
 
-        tree = ttk.Treeview(
-            tframe, columns=columns, height=18, show="headings"
+        self.tree = ttk.Treeview(
+            tframe, columns=columns, show="headings", style='Data.Treeview'
         )
-        tree.column("id", width=30)
+        self.tree.column("id", width=30)
 
         for col in columns[1:]:
-            tree.column(col, width=350)
-            tree.heading(col, text=col)
+            self.tree.column(col, width=350)
+            self.tree.heading(col, text=col)
 
-        tree.pack(side="left", fill="y")
+        self.tree.pack(side="left", fill="y")
 
         scrollbar = ttk.Scrollbar(tframe, orient='vertical')
-        scrollbar.configure(command=tree.yview)
+        scrollbar.configure(command=self.tree.yview)
         scrollbar.pack(side="right", fill="y")
 
-        tree.config(yscrollcommand=scrollbar.set)
+        self.tree.config(yscrollcommand=scrollbar.set)
 
         
         for child in self.winfo_children():
             child.grid_configure(padx=8, pady=8)
 
+
+    def search(self, *args):
+        with open('data.json') as json_file:
+            data_list = json.load(json_file)
+
+        list_values = []
+        
+        x = True
+
+        for i in data_list:
+            tuples_values = []
+
+            for x in i.keys():
+                tuples_values.append(x)
+            for y in i.values():
+                for z in y.values():
+                    tuples_values.append(z)
+            for i in tuples_values:
+                if self.controller.search_name.get() in i and self.controller.search_name.get().strip() != "":
+                    self.tree.insert("", "end", values=tuples_values)
 
     def insert_data(self):
         pass

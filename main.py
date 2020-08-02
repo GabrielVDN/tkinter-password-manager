@@ -79,6 +79,7 @@ class PasswordManager(tk.Tk):
         self.add_username = tk.StringVar()
         self.add_password = tk.StringVar()
 
+        self.search_name = tk.StringVar()
 
 
         self.frames = {}
