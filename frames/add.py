@@ -11,8 +11,8 @@ class Add(ttk.Frame):
         
         # Center your Frame in the middle-top.
         self.columnconfigure(0, weight=1)
-        
-        label_service = ttk.Label(self, text="Service*")
+
+        label_service = ttk.Label(self, text="Service*", style="Background.TLabel")
         label_service.grid(row=0, columnspan=2, padx=8, pady=8)
         
         btn_back = ttk.Button(
@@ -33,7 +33,7 @@ class Add(ttk.Frame):
         self.entry_service.grid(row=1, columnspan=2, padx=8, pady=(8, 18))
 
         label_username = ttk.Label(
-            self, text="Username"
+            self, text="Username", style="Background.TLabel"
         )
         label_username.grid(row=2, columnspan=2, padx=8, pady=8)
 
@@ -46,7 +46,7 @@ class Add(ttk.Frame):
         self.entry_username.grid(row=3, columnspan=2, padx=8, pady=(8, 18))
 
         label_password = ttk.Label(
-            self, text="Password*"
+            self, text="Password*", style="Background.TLabel"
         )
         label_password.grid(row=4, columnspan=2, padx=8, pady=8)
 
@@ -63,7 +63,8 @@ class Add(ttk.Frame):
             text="Add To Manager",
             cursor="hand2",
             width=18,
-            command=lambda: self.add_data()
+            command=lambda: self.add_data(),
+            style="Font.TButton"
         )
         btn_add.grid(row=6, columnspan=2, padx=8, pady=(8, 18))
 

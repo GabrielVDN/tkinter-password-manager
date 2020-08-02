@@ -40,12 +40,27 @@ class PasswordManager(tk.Tk):
         style = ttk.Style()
         style.theme_use("clam")
 
+        # Create some custom styles.
+        style.configure("Background.TFrame", background="#F0F0F0")
+        
+        style.configure("Background.TLabel", background="#F0F0F0")
+
+        style.configure(
+            "Font.TButton",
+            font=("TkDefaultFont", 15),
+            relief="solid"
+        )
+        style.map(
+            "Font.TButton",
+            font=[("active",  ("TkDefaultFont", 17))]
+        )
+
         # Give the Widget a name.
         self.title("Password Manager")
         # Center your Frame in the middle-top.
         self.columnconfigure(0, weight=1)
 
-        # Set the overall fontsize to 15 instead of 10.
+        # Set the overall fontsize to 16 instead of 10.
         font.nametofont("TkDefaultFont").configure(size=16)
 
         # Create all needed tk.-variables.

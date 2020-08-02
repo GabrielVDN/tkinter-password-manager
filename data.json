@@ -1,1 +1,9 @@
-[]
+[
+  {
+    "1": {
+      "Service": "paypall",
+      "Username": "gab",
+      "Password": "gab2020paypall"
+    }
+  }
+]

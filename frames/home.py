@@ -12,7 +12,7 @@ class Home(ttk.Frame):
         self.columnconfigure(0, weight=1)
 
         label_1 = ttk.Label(
-            self, textvariable=controller.login2
+            self, textvariable=controller.login2, style="Background.TLabel"
         )
         label_1.grid(row=0, columnspan=3, padx=12, pady=(50,12))
 
@@ -28,12 +28,13 @@ class Home(ttk.Frame):
             self,
             text="Submit",
             cursor="hand2",
-            command=lambda: self.submit()
+            command=lambda: self.submit(),
+            style="Font.TButton"
         )
         self.btn_submit.grid(row=2, columnspan=3, padx=12, pady=12)
         
         # Create a new frame for the buttons.
-        tframe = ttk.Frame(self)
+        tframe = ttk.Frame(self, style="Background.TFrame")
         tframe.grid(row=3, columnspan=4, pady=(70,0))
 
         self.btn_add = ttk.Button(
@@ -41,7 +42,8 @@ class Home(ttk.Frame):
             text=" 📝\nAdd",
             command=lambda: controller.show_frame("Add"),
             cursor="hand2",
-            state='disabled'
+            state='disabled',
+            style="Font.TButton"
         )
         self.btn_add.grid(row=0, column=0)
 
@@ -50,7 +52,8 @@ class Home(ttk.Frame):
             text="📃\nList",
             command=lambda: controller.show_frame("List"),
             cursor="hand2",
-            state='disabled'
+            state='disabled',
+            style="Font.TButton"
         )
         self.btn_list.grid(row=0, column=1)
 
@@ -59,7 +62,8 @@ class Home(ttk.Frame):
             text="  🔍\nSearch",
             command=lambda: controller.show_frame("Search"),
             cursor="hand2",
-            state='disabled'
+            state='disabled',
+            style="Font.TButton"
         )
         self.btn_search.grid(row=0, column=2)
 

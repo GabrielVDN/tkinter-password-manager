@@ -13,7 +13,7 @@ class Login(ttk.Frame):
         self.columnconfigure(0, weight=1)
 
         label_1 = ttk.Label(
-            self, textvariable=controller.login1
+            self, textvariable=controller.login1, style="Background.TLabel"
         )
         label_1.grid(row=0, column=0, pady=(100,12))
 
@@ -29,7 +29,8 @@ class Login(ttk.Frame):
             self,
             text="Submit",
             cursor="hand2",
-            command=lambda: self.submit()
+            command=lambda: self.submit(),
+            style="Font.TButton"
         )
         self.btn_submit.grid(row=2, column=0, pady=12)
 

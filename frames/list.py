@@ -13,7 +13,7 @@ class List(ttk.Frame):
         self.columnconfigure(0, weight=1)
 
         # Adding the Treeview
-        label_1 = ttk.Label(self, text="Double Click to copy password")
+        label_1 = ttk.Label(self, text="Double Click to copy password", style="Background.TLabel")
         label_1.grid(row=0, columnspan=2)
 
         btn_back = ttk.Button(
