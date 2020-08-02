@@ -3,7 +3,6 @@
 This project is a Tkinter GUI of a work managing tool.
 <br>
 To test it or to see the GUI download the exe and open it, this doesn't need adjustments, it's ready to go.
-!(https://photos.google.com/photo/AF1QipOmRhuCPw71dj1aE-9d3cpn55YyZZY8tx_7k0bI)
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
