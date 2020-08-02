@@ -3,6 +3,11 @@
 This project is a Tkinter GUI of a work managing tool.
 <br>
 To test it or to see the GUI download the exe and open it, this doesn't need adjustments, it's ready to go.
+![](image1.png =24x48)
+![](image2.png | width=100)
+![](image3.png | width=100)
+![](image4.png | width=100)
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
