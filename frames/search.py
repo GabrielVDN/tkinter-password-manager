@@ -63,12 +63,10 @@ class Search(ttk.Frame):
         self.tree = ttk.Treeview(
             tframe, columns=columns, show="headings", style='Data.Treeview'
         )
-        self.tree.column("id", width=30)
-
-        for col in columns[1:]:
-            self.tree.column(col, width=350)
-            self.tree.heading(col, text=col)
-
+        self.tree.column("id", width=45)
+        self.tree.column("Service", width=300)
+        self.tree.column("Username*", width=600)
+        self.tree.column("Password", width=300)
         self.tree.pack(side="left", fill="y")
         self.tree.bind("<Double-1>", self.OnDoubleClick)
 
@@ -88,8 +86,6 @@ class Search(ttk.Frame):
             data_list = json.load(json_file)
 
         list_values = []
-        
-        x = True
 
         for i in data_list:
             tuples_values = []
@@ -99,8 +95,8 @@ class Search(ttk.Frame):
             for y in i.values():
                 for z in y.values():
                     tuples_values.append(z)
-            for i in tuples_values:
-                if self.controller.search_name.get() in i and self.controller.search_name.get().strip() != "":
+            for t in tuples_values:
+                if self.controller.search_name.get().strip().lower() in t.lower() and self.controller.search_name.get().strip() != "":
                     try:
                         self.tree.insert("", "end", values=tuples_values)
                         # Delte the tuple because else it could show twice.

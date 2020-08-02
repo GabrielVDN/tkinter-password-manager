@@ -41,12 +41,10 @@ class List(ttk.Frame):
             tframe, columns=columns, show="headings", style='Data.Treeview'
         )
         self.tree.column("id", width=45)
+        self.tree.column("Service", width=300)
+        self.tree.column("Username*", width=600)
+        self.tree.column("Password", width=300)
         self.tree.bind("<Double-1>", self.OnDoubleClick)
-
-        for col in columns[1:]:
-            self.tree.column(col, width=350)
-            self.tree.heading(col, text=col)
-
         self.tree.pack(side="left", fill="y")
 
 
