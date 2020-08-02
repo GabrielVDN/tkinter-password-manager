@@ -64,10 +64,8 @@ class List(ttk.Frame):
         item = self.tree.focus()
 
         # Copies password to clipboard
-        service = self.tree.item(item, "values")[0]
-        var = self.data[service][1]
-        var = encode.decode(var)
-        pyperclip.copy(var)
+        copy_password = self.tree.item(item, "values")[3]
+        pyperclip.copy(copy_password)
 
     def insert_data(self):
         """
