@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 import json
+import pyperclip
 
 
 class Search(ttk.Frame):
@@ -11,6 +12,12 @@ class Search(ttk.Frame):
         # Center your Frame in the middle-top.
         self.columnconfigure(0, weight=1)
 
+        def onEnter(event):
+            empty_tree(None)
+            self.search()
+            self.entry_search.delete(0,'end')
+            self.focus_entry()
+
         self.entry_search = ttk.Entry(
             self,
             width=48,
@@ -18,12 +25,18 @@ class Search(ttk.Frame):
             font=("TkDefaultFont", 16)
         )
         self.entry_search.grid(row=0, column=0)
-        
+        self.entry_search.bind("<Return>", onEnter)
+
         label_search = ttk.Button(
             self,
             text="🔍",
             width=3,
-            command=lambda: [empty_tree(None), self.search(),self.entry_search.delete(0,'end')]
+            command=lambda: [
+                empty_tree(None),
+                self.search(),
+                self.entry_search.delete(0,'end'),
+                self.focus_entry()
+            ]
         )
         label_search.grid(row=0, column=1)
         
@@ -57,6 +70,7 @@ class Search(ttk.Frame):
             self.tree.heading(col, text=col)
 
         self.tree.pack(side="left", fill="y")
+        self.tree.bind("<Double-1>", self.OnDoubleClick)
 
         scrollbar = ttk.Scrollbar(tframe, orient='vertical')
         scrollbar.configure(command=self.tree.yview)
@@ -93,6 +107,13 @@ class Search(ttk.Frame):
                         del tuples_values
                     except:
                         pass
+  
+    def OnDoubleClick(self, event):
+        item = self.tree.focus()
+
+        # Copies password to clipboard
+        copy_password = self.tree.item(item, "values")[3]
+        pyperclip.copy(copy_password)
 
 
     def insert_data(self):

@@ -23,6 +23,7 @@ class Login(ttk.Frame):
             font=("TkDefaultFont", 16)
         )
         self.entry_password.grid(row=1, column=0, pady=12)
+        self.entry_password.bind("<Return>", self.submit)
 
 
         self.btn_submit = ttk.Button(

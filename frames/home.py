@@ -16,12 +16,16 @@ class Home(ttk.Frame):
         )
         label_1.grid(row=0, columnspan=3, padx=12, pady=(50,12))
 
+        def onEnter(event):
+            self.submit()
+
         self.entry_password = ttk.Entry(
             self, width=30,
             textvariable=controller.login3_password,
             font=("TkDefaultFont", 16), show='*'
         )
         self.entry_password.grid(row=1, columnspan=3, padx=12, pady=12)
+        self.entry_password.bind("<Return>", onEnter)
 
 
         self.btn_submit = ttk.Button(
@@ -78,8 +82,8 @@ class Home(ttk.Frame):
 
         if self.controller.login3_password.get().strip() == password:
             self.controller.login2.set("logged in")
-            
             self.entry_password.delete(0, 'end')
+            
             self.entry_password['state'] = 'disabled'
             self.btn_submit['state'] = 'disabled'
 
@@ -91,6 +95,7 @@ class Home(ttk.Frame):
             self.controller.login2.set(
                 "Incorrect, try again."
             )
+            self.entry_password.delete(0, 'end')
     
     def insert_data(self):
         pass

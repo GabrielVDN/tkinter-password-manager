@@ -24,6 +24,9 @@ class Add(ttk.Frame):
         )
         btn_back.grid(row=0, column=1, sticky="E", padx=8, pady=8)
 
+        def onEnter1(event):
+            self.entry_username.focus()
+
         self.entry_service = ttk.Entry(
             self,
             width=18,
@@ -31,11 +34,15 @@ class Add(ttk.Frame):
             font=("TkDefaultFont", 16)
         )
         self.entry_service.grid(row=1, columnspan=2, padx=8, pady=(8, 18))
+        self.entry_service.bind("<Return>", onEnter1)
 
         label_username = ttk.Label(
             self, text="Username", style="Background.TLabel"
         )
         label_username.grid(row=2, columnspan=2, padx=8, pady=8)
+
+        def onEnter2(event):
+            self.entry_password.focus()
 
         self.entry_username = ttk.Entry(
             self,
@@ -44,11 +51,16 @@ class Add(ttk.Frame):
             font=("TkDefaultFont", 16)
         )
         self.entry_username.grid(row=3, columnspan=2, padx=8, pady=(8, 18))
+        self.entry_username.bind("<Return>", onEnter2)
 
         label_password = ttk.Label(
             self, text="Password*", style="Background.TLabel"
         )
         label_password.grid(row=4, columnspan=2, padx=8, pady=8)
+
+        def onEnter3(event):
+            self.add_data()
+            self.entry_service.focus()
 
         self.entry_password = ttk.Entry(
             self,
@@ -57,6 +69,7 @@ class Add(ttk.Frame):
             font=("TkDefaultFont", 16)
         )
         self.entry_password.grid(row=5, columnspan=2, padx=8, pady=(8, 18))
+        self.entry_password.bind("<Return>", onEnter3)
 
         btn_add = ttk.Button(
             self,

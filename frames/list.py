@@ -40,7 +40,7 @@ class List(ttk.Frame):
         self.tree = ttk.Treeview(
             tframe, columns=columns, show="headings", style='Data.Treeview'
         )
-        self.tree.column("id", width=30)
+        self.tree.column("id", width=45)
         self.tree.bind("<Double-1>", self.OnDoubleClick)
 
         for col in columns[1:]:
@@ -48,12 +48,6 @@ class List(ttk.Frame):
             self.tree.heading(col, text=col)
 
         self.tree.pack(side="left", fill="y")
-
-        # scrollbar = ttk.Scrollbar(tframe, orient='vertical')
-        # scrollbar.configure(command=self.tree.yview)
-        # scrollbar.pack(side="right", fill="y")
-
-        # self.tree.config(yscrollcommand=scrollbar.set)
 
 
         for child in self.winfo_children():
