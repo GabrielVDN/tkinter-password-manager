@@ -19,11 +19,15 @@ class List(ttk.Frame):
         btn_back = ttk.Button(
             self,
             text="🔙",
-            command=lambda: controller.show_frame("Home"),
+            command=lambda: [controller.show_frame("Home"), empty_tree(None)],
             cursor="hand2",
             width=3
         )
         btn_back.grid(row=0, column=1, sticky="E")
+
+        def empty_tree(event):
+            for i in self.tree.get_children():
+                self.tree.delete(i)
 
         
         # Create a new frame for the treeview.
