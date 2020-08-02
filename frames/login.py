@@ -17,13 +17,16 @@ class Login(ttk.Frame):
         )
         label_1.grid(row=0, column=0, pady=(100,12))
 
+        def onEnter(event):
+            self.submit()
+
         self.entry_password = ttk.Entry(
             self, width=30,
             textvariable=controller.login1_password,
             font=("TkDefaultFont", 16)
         )
         self.entry_password.grid(row=1, column=0, pady=12)
-        self.entry_password.bind("<Return>", self.submit)
+        self.entry_password.bind("<Return>", onEnter)
 
 
         self.btn_submit = ttk.Button(
