@@ -69,8 +69,8 @@ class Add(ttk.Frame):
 
         self.last_nmr = tk.IntVar() # Default; value=0
 
-        with open('data.txt') as json_file:
-                data_list = json.load(json_file)
+        with open('data.json') as json_file:
+            data_list = json.load(json_file)
 
         try:
             last_dict = data_list[-1]
@@ -83,7 +83,7 @@ class Add(ttk.Frame):
         if self.controller.add_service.get().strip() != '' and self.controller.add_password.get().strip() != '':
             self.last_nmr.set(self.last_nmr.get() + 1)
 
-            with open('data.txt') as json_file:
+            with open('data.json') as json_file:
                 data_list = json.load(json_file)
 
             data = {}
@@ -94,14 +94,21 @@ class Add(ttk.Frame):
             }
             data_list.append(data)
 
-            with open('data.txt', 'w') as outfile:
+            with open('data.json', 'w') as outfile:
                 json.dump(data_list, outfile, indent=2)
 
             self.empty_entry()
         else:
             messagebox.showerror("No Input", "You need to input something in Service and Password!")
+            self.entry_service.focus()
 
     def empty_entry(self):
         self.entry_password.delete(0,'end')
         self.entry_service.delete(0,'end')
         self.entry_username.delete(0,'end')
+    
+    def insert_data(self):
+        pass
+    
+    def focus_entry(self):
+        self.entry_service.focus()

@@ -61,3 +61,9 @@ class Search(ttk.Frame):
         
         for child in self.winfo_children():
             child.grid_configure(padx=8, pady=8)
+    
+    def insert_data(self):
+        pass
+    
+    def focus_entry(self):
+        self.entry_search.focus()

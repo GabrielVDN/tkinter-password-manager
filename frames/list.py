@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
 import json
+from tkinter import messagebox
 
 
 class List(ttk.Frame):
@@ -52,30 +53,36 @@ class List(ttk.Frame):
         for child in self.winfo_children():
             child.grid_configure(padx=10, pady=10)
 
-        self.insert_data()
   
         
     def insert_data(self):
         """
         Insertion method.
         """
-        with open('data.txt') as json_file:
-            data_list = json.load(json_file)
+        try:
+            with open('data.json') as json_file:
+                data_list = json.load(json_file)
 
-        list_values = []
-        
-        for i in data_list:
-            tuples_values = []
-
-            for x in i.keys():
-                tuples_values.append(x)
-            for y in i.values():
-                for z in y.values():
-                    tuples_values.append(z)
-
-            list_values.append(tuple(tuples_values))
-        print(list_values)
+            list_values = []
             
-        # for row in tuples_values:
-        #     self.tree.insert("", "end", values=row)           
-        self.tree.insert("", "end", values=list_values[0])
+            for i in data_list:
+                tuples_values = []
+
+                for x in i.keys():
+                    tuples_values.append(x)
+                for y in i.values():
+                    for z in y.values():
+                        tuples_values.append(z)
+
+                list_values.append(tuple(tuples_values))
+                
+            # for row in tuples_values:
+            #     self.tree.insert("", "end", values=row)
+            self.tree.insert("", "end", values=list_values[0])
+
+        except:
+            messagebox.showerror(
+                "No Data", "There is no data.")
+    
+    def focus_entry(self):
+        pass

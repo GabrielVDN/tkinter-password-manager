@@ -39,7 +39,7 @@ class Login(ttk.Frame):
     def submit(self):
         if self.x.get() == 2:
             if self.controller.login1_password.get().strip() == self.controller.login2_password.get():
-                with open('password.txt', 'w') as outfile:
+                with open('password.json', 'w') as outfile:
                     json.dump(self.controller.login2_password.get(), outfile, indent=2)
 
                 self.controller.show_frame("Home")
@@ -59,3 +59,9 @@ class Login(ttk.Frame):
                 messagebox.showerror(
                     "Invalid Input", "Your Password needs to be 6 or more characters!"
                 )
+    
+    def insert_data(self):
+        pass
+    
+    def focus_entry(self):
+        self.entry_password.focus()

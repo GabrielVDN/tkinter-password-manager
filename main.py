@@ -10,6 +10,24 @@ from frames.search import Search
 from ctypes import windll
 windll.shcore.SetProcessDpiAwareness(1)
 
+# Check if the json files exist.
+try:
+    with open('data.json') as json_file:
+        pass
+
+    with open('password.json') as json_file:
+        pass
+except:
+    data = []
+    with open('data.json', 'w') as outfile:
+        json.dump(data, outfile)
+
+    password = ""
+    with open('password.json', 'w') as outfile:
+        json.dump(password, outfile)
+
+
+
 
 # Create a Tkinter Widget.
 class PasswordManager(tk.Tk): 
@@ -57,19 +75,24 @@ class PasswordManager(tk.Tk):
             # the one on the top of the stacking order
             # will be the one that is visible.
             frame.grid(row=0, column=0, sticky="nsew")
+        
+        try:
+            with open('password.json') as json_file:
+                password = json.load(json_file)
 
-        with open('password.txt') as json_file:
-            password = json.load(json_file)
-
-        if password == "":
+            if password == "":
+                self.show_frame("Login")
+            else:
+                self.show_frame("Home")
+        except:
             self.show_frame("Login")
-        else:
-            self.show_frame("Home")
 
     def show_frame(self, page_name):
         '''Show a frame for the given page name'''
         frame = self.frames[page_name]
         frame.tkraise()
+        frame.insert_data()
+        frame.focus_entry()
 
 
 GUI = PasswordManager()

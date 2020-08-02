@@ -68,7 +68,7 @@ class Home(ttk.Frame):
             child.grid_configure(padx=12, pady=12)
 
     def submit(self):
-        with open('password.txt') as json_file:
+        with open('password.json') as json_file:
             password = json.load(json_file)
 
         if self.controller.login3_password.get().strip() == password:
@@ -86,3 +86,9 @@ class Home(ttk.Frame):
             self.controller.login2.set(
                 "Incorrect, try again."
             )
+    
+    def insert_data(self):
+        pass
+    
+    def focus_entry(self):
+        self.entry_password.focus()
