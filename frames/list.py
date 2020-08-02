@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 import json
 from tkinter import messagebox
+import pyperclip
 
 
 class List(ttk.Frame):
@@ -40,6 +41,7 @@ class List(ttk.Frame):
             tframe, columns=columns, show="headings", style='Data.Treeview'
         )
         self.tree.column("id", width=30)
+        self.tree.bind("<Double-1>", self.OnDoubleClick)
 
         for col in columns[1:]:
             self.tree.column(col, width=350)
@@ -58,6 +60,15 @@ class List(ttk.Frame):
             child.grid_configure(padx=10, pady=10)
 
   
+    def OnDoubleClick(self, event):
+        item = self.tree.focus()
+
+        # Copies password to clipboard
+        service = self.tree.item(item, "values")[0]
+        var = self.data[service][1]
+        var = encode.decode(var)
+        pyperclip.copy(var)
+
     def insert_data(self):
         """
         Insertion method.
