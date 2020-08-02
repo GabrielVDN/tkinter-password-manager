@@ -34,7 +34,7 @@ class Search(ttk.Frame):
         btn_back = ttk.Button(
             self,
             text="🔙",
-            command=lambda: [controller.show_frame("Home"), self.entry_search.delete(0,'end')],
+            command=lambda: [controller.show_frame("Home"), self.entry_search.delete(0,'end'), empty_tree(None)],
             cursor="hand2",
             width=3
         )
@@ -87,7 +87,13 @@ class Search(ttk.Frame):
                     tuples_values.append(z)
             for i in tuples_values:
                 if self.controller.search_name.get() in i and self.controller.search_name.get().strip() != "":
-                    self.tree.insert("", "end", values=tuples_values)
+                    try:
+                        self.tree.insert("", "end", values=tuples_values)
+                        # Delte the tuple because else it could show twice.
+                        del tuples_values
+                    except:
+                        pass
+
 
     def insert_data(self):
         pass
