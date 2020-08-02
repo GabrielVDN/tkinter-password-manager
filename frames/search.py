@@ -70,6 +70,9 @@ class Search(ttk.Frame):
         self.tree.pack(side="left", fill="y")
         self.tree.bind("<Double-1>", self.OnDoubleClick)
 
+        for col in columns:
+            self.tree.heading(col, text=col)
+
         scrollbar = ttk.Scrollbar(tframe, orient='vertical')
         scrollbar.configure(command=self.tree.yview)
         scrollbar.pack(side="right", fill="y")

@@ -47,6 +47,8 @@ class List(ttk.Frame):
         self.tree.bind("<Double-1>", self.OnDoubleClick)
         self.tree.pack(side="left", fill="y")
 
+        for col in columns:
+            self.tree.heading(col, text=col)
 
         for child in self.winfo_children():
             child.grid_configure(padx=10, pady=10)
