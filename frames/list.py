@@ -29,7 +29,7 @@ class List(ttk.Frame):
         tframe = ttk.Frame(self)
         tframe.grid(row=1, columnspan=2)
 
-        columns = ['id', 'Service', 'Username*', 'Password']
+        columns = ('id', 'Service', 'Username*', 'Password')
 
         self.tree = ttk.Treeview(
             tframe, columns=columns, height=18, show="headings"
@@ -42,11 +42,11 @@ class List(ttk.Frame):
 
         self.tree.pack(side="left", fill="y")
 
-        scrollbar = ttk.Scrollbar(tframe, orient='vertical')
-        scrollbar.configure(command=self.tree.yview)
-        scrollbar.pack(side="right", fill="y")
+        # scrollbar = ttk.Scrollbar(tframe, orient='vertical')
+        # scrollbar.configure(command=self.tree.yview)
+        # scrollbar.pack(side="right", fill="y")
 
-        self.tree.config(yscrollcommand=scrollbar.set)
+        # self.tree.config(yscrollcommand=scrollbar.set)
 
 
         for child in self.winfo_children():
@@ -74,11 +74,7 @@ class List(ttk.Frame):
                     tuples_values.append(z)
 
             list_values.append(tuple(tuples_values))
+        print(list_values)
             
-            print(list_values)
-            
-        # index = iid = 0
-        # for row in tuples_values:
-        #     treeView.insert("", index, iid, values=row)
-        #     index = iid = index + 1
-                
+        for row in tuples_values:
+            self.tree.insert("", "end", values=row)                
