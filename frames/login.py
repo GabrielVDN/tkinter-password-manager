@@ -35,7 +35,7 @@ class Login(ttk.Frame):
 
         self.x = tk.IntVar(value=1)
 
-    
+
     def submit(self):
         if self.x.get() == 2:
             if self.controller.login1_password.get().strip() == self.controller.login2_password.get():

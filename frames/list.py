@@ -54,7 +54,6 @@ class List(ttk.Frame):
             child.grid_configure(padx=10, pady=10)
 
   
-        
     def insert_data(self):
         """
         Insertion method.

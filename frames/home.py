@@ -67,6 +67,7 @@ class Home(ttk.Frame):
         for child in tframe.winfo_children():
             child.grid_configure(padx=12, pady=12)
 
+
     def submit(self):
         with open('password.json') as json_file:
             password = json.load(json_file)
