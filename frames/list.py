@@ -78,9 +78,7 @@ class List(ttk.Frame):
                         tuples_values.append(z)
 
                 list_values.append(tuple(tuples_values))
-                
-            # for row in tuples_values:
-            #     self.tree.insert("", "end", values=row)
+
             amount = 0
             while amount < len(list_values):
                 self.tree.insert("", "end", values=list_values[amount])
