@@ -3,7 +3,7 @@
 This project is a Tkinter GUI of a work managing tool.
 <br>
 To test it or to see the GUI download the exe and open it, this doesn't need adjustments, it's ready to go.
-![](image.png)
+![](image.jpg)
 
 ## Getting Started
 
