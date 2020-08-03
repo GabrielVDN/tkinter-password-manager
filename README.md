@@ -1,6 +1,6 @@
 # tkinter-passsword-manager
 
-This project is a Tkinter GUI of a work managing tool.
+This project is a Tkinter GUI of a password managing tool.
 <br>
 To test it or to see the GUI download the exe and open it, this doesn't need adjustments, it's ready to go.
 ![](image.jpg)
