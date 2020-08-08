@@ -64,6 +64,7 @@ class Login(ttk.Frame):
                 messagebox.showerror(
                     "Invalid Input", "Your Password needs to be 6 or more characters!"
                 )
+        self.entry_password.focus()
     
     def insert_data(self):
         pass

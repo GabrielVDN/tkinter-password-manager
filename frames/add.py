@@ -29,7 +29,7 @@ class Add(ttk.Frame):
 
         self.entry_service = ttk.Entry(
             self,
-            width=18,
+            width=30,
             textvariable=controller.add_service,
             font=("TkDefaultFont", 16)
         )
@@ -46,7 +46,7 @@ class Add(ttk.Frame):
 
         self.entry_username = ttk.Entry(
             self,
-            width=18,
+            width=30,
             textvariable=controller.add_username,
             font=("TkDefaultFont", 16)
         )
@@ -64,7 +64,7 @@ class Add(ttk.Frame):
 
         self.entry_password = ttk.Entry(
             self,
-            width=18,
+            width=30,
             textvariable=controller.add_password,
             font=("TkDefaultFont", 16)
         )
@@ -75,7 +75,7 @@ class Add(ttk.Frame):
             self,
             text="Add To Manager",
             cursor="hand2",
-            width=18,
+            width=30,
             command=lambda: self.add_data(),
             style="Font.TButton"
         )

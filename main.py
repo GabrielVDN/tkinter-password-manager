@@ -95,16 +95,13 @@ class PasswordManager(tk.Tk):
             # will be the one that is visible.
             frame.grid(row=0, column=0, sticky="nsew")
         
-        try:
-            with open('password.json') as json_file:
-                password = json.load(json_file)
+        with open(self.path_password.get()) as json_file:
+            password = json.load(json_file)
 
-            if password == "":
-                self.show_frame("Login")
-            else:
-                self.show_frame("Home")
-        except:
+        if password == "":
             self.show_frame("Login")
+        else:
+            self.show_frame("Home")
 
     def show_frame(self, page_name):
         '''Show a frame for the given page name'''
