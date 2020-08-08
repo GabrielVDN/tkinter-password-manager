@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import ttk
 import tkinter.font as font
 import json
+import os
 from frames.login import Login
 from frames.home import Home
 from frames.add import Add
@@ -10,21 +11,19 @@ from frames.search import Search
 from ctypes import windll
 windll.shcore.SetProcessDpiAwareness(1)
 
-# Check if the json files exist.
-try:
-    with open('data.json') as json_file:
-        pass
-except:
+
+path_appdata = os.getenv("APPDATA")
+# Check if the datafolder exist.
+# If not, create it.
+if not os.path.exists(path_appdata+'\\password-manager'):
+    os.mkdir(path_appdata+'\\password-manager')
+
     data = []
-    with open('data.json', 'w') as outfile:
+    with open(path_appdata+'\\password-manager\\data.json', 'w') as outfile:
         json.dump(data, outfile)
 
-try:
-    with open('password.json') as json_file:
-        pass
-except:
     password = ""
-    with open('password.json', 'w') as outfile:
+    with open(path_appdata+'\\password-manager\\password.json', 'w') as outfile:
         json.dump(password, outfile)
 
 
@@ -66,6 +65,9 @@ class PasswordManager(tk.Tk):
         font.nametofont("TkDefaultFont").configure(size=16)
 
         # Create all needed tk.-variables.
+        self.path_data = tk.StringVar(value=path_appdata+'\\password-manager\\data.json')
+        self.path_password = tk.StringVar(value=path_appdata+'\\password-manager\\password.json')
+
         self.login1 = tk.StringVar(
             value="Choose a log-in password\nfor this Password Manager."
         )

@@ -77,7 +77,7 @@ class Home(ttk.Frame):
 
 
     def submit(self):
-        with open('password.json') as json_file:
+        with open(self.controller.path_password.get()) as json_file:
             password = json.load(json_file)
 
         if self.controller.login3_password.get().strip() == password:

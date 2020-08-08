@@ -85,7 +85,7 @@ class Search(ttk.Frame):
 
 
     def search(self, *args):
-        with open('data.json') as json_file:
+        with open(self.controller.path_data.get()) as json_file:
             data_list = json.load(json_file)
 
         list_values = []
