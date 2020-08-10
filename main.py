@@ -64,10 +64,11 @@ class PasswordManager(tk.Tk):
         # Set the overall fontsize to 16 instead of 10.
         font.nametofont("TkDefaultFont").configure(size=16)
 
-        # Create all needed tk.-variables.
+        # Create the path variables.
         self.PATH_DATA = os.path.join(*[PATH_APPDATA, 'password-manager', 'data.json'])
         self.PATH_PASSWORD = os.path.join(*[PATH_APPDATA, 'password-manager', 'password.json'])
 
+        # Create all needed tk.-variables.
         self.login1 = tk.StringVar(
             value="Choose a log-in password\nfor this Password Manager."
         )
