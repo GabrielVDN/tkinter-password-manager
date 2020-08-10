@@ -83,7 +83,7 @@ class Add(ttk.Frame):
 
         self.last_nmr = tk.IntVar() # Default; value=0
 
-        with open(self.controller.path_data.get()) as json_file:
+        with open(self.controller.PATH_DATA) as json_file:
             data_list = json.load(json_file)
 
         try:
@@ -97,7 +97,7 @@ class Add(ttk.Frame):
         if self.controller.add_service.get().strip() != '' and self.controller.add_password.get().strip() != '':
             self.last_nmr.set(self.last_nmr.get() + 1)
 
-            with open(self.controller.path_data.get()) as json_file:
+            with open(self.controller.PATH_DATA) as json_file:
                 data_list = json.load(json_file)
 
             data = {}
@@ -108,7 +108,7 @@ class Add(ttk.Frame):
             }
             data_list.append(data)
 
-            with open(self.controller.path_data.get(), 'w') as outfile:
+            with open(self.controller.PATH_DATA, 'w') as outfile:
                 json.dump(data_list, outfile, indent=2)
 
             self.empty_entry()

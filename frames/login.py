@@ -44,7 +44,7 @@ class Login(ttk.Frame):
     def submit(self):
         if self.x.get() == 2:
             if self.controller.login1_password.get().strip() == self.controller.login2_password.get():
-                with open(self.controller.path_password.get(), 'w') as outfile:
+                with open(self.controller.PATH_PASSWORD, 'w') as outfile:
                     json.dump(self.controller.login2_password.get(), outfile, indent=2)
 
                 self.controller.show_frame("Home")

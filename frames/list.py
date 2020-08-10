@@ -66,7 +66,7 @@ class List(ttk.Frame):
         Insertion method.
         """
         try:
-            with open(self.controller.path_data.get()) as json_file:
+            with open(self.controller.PATH_DATA) as json_file:
                 data_list = json.load(json_file)
 
             list_values = []

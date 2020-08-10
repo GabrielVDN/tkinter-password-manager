@@ -12,18 +12,18 @@ from ctypes import windll
 windll.shcore.SetProcessDpiAwareness(1)
 
 
-path_appdata = os.getenv("APPDATA")
+PATH_APPDATA = os.getenv("APPDATA")
 # Check if the datafolder exist.
 # If not, create it.
-if not os.path.exists(path_appdata+'\\password-manager'):
-    os.mkdir(path_appdata+'\\password-manager')
+if not os.path.exists(PATH_APPDATA+'\\password-manager'):
+    os.mkdir(PATH_APPDATA+'\\password-manager')
 
     data = []
-    with open(path_appdata+'\\password-manager\\data.json', 'w') as outfile:
+    with open(PATH_APPDATA+'\\password-manager\\data.json', 'w') as outfile:
         json.dump(data, outfile)
 
     password = ""
-    with open(path_appdata+'\\password-manager\\password.json', 'w') as outfile:
+    with open(PATH_APPDATA+'\\password-manager\\password.json', 'w') as outfile:
         json.dump(password, outfile)
 
 
@@ -65,8 +65,8 @@ class PasswordManager(tk.Tk):
         font.nametofont("TkDefaultFont").configure(size=16)
 
         # Create all needed tk.-variables.
-        self.path_data = tk.StringVar(value=path_appdata+'\\password-manager\\data.json')
-        self.path_password = tk.StringVar(value=path_appdata+'\\password-manager\\password.json')
+        self.PATH_DATA = os.path.join(*[PATH_APPDATA, 'password-manager', 'data.json'])
+        self.PATH_PASSWORD = os.path.join(*[PATH_APPDATA, 'password-manager', 'password.json'])
 
         self.login1 = tk.StringVar(
             value="Choose a log-in password\nfor this Password Manager."
@@ -95,7 +95,7 @@ class PasswordManager(tk.Tk):
             # will be the one that is visible.
             frame.grid(row=0, column=0, sticky="nsew")
         
-        with open(self.path_password.get()) as json_file:
+        with open(self.PATH_PASSWORD) as json_file:
             password = json.load(json_file)
 
         if password == "":
